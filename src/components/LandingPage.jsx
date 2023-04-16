@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { Link } from "react-router-dom"
 import Navbar1 from "./Navbar1"
-import svg from "../assets/workConfused.svg"
+import svg from "/images/WorkConfused.svg"
 
 export default () => {
 

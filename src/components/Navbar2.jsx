@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react"
-import profileIcon from "public/assets/profileIcon.png"
+import profileIcon from "/images/profileIcon.png"
 
 // Profile Dropdown
 const ProfileDropDown = (props) => {
