@@ -6,7 +6,7 @@ import CollegeName from "./signUp/CollegeName"
 import Course from "./home/Course"
 import Instructor from "./home/Instructor"
 // import svg from "../assets/workConsfused.svg"
-import svg from "../assets/workConfused.svg"
+import svg from "public/assets/workConsfused.svg"
 
 export default () => {
 
