@@ -16,7 +16,7 @@ export default () => {
     return (
         <>  
             {state ? (
-            <div className="fixed inset-0 z-10 overflow-y-auto">
+            <div className="fixed inset-0 z-30 overflow-y-auto">
                 <div className="fixed inset-0 w-full h-full bg-black opacity-40" onClick={() => setState(false)}></div>
                     <div className="flex items-center min-h-screen px-4 py-8">
                         <div className="relative w-full max-w-5xl mx-auto bg-white rounded-md shadow-lg">
@@ -35,67 +35,67 @@ export default () => {
                             <form className="p-4 my-2 text-[15.5px] leading-relaxed text-gray-500">
                                 <div className="grid grid-cols-2 grid-rows-3 gap-3">
                                     <div>
-                                        <label for="course-name" className="block p-1 text-gray-600">
+                                        <label for="course-name" className="block p-1 text-gray-900">
                                             Course Name
                                         </label>
                                         <Course />
                                     </div>
 
                                     <div>
-                                        <label for="instructor" className="block p-1 text-gray-600">
+                                        <label for="instructor" className="block p-1 text-gray-900">
                                             Instructor Name
                                         </label>
                                         <Instructor />
                                     </div>
 
                                     <div>
-                                        <label for="overall-course-rating" className="block p-1 text-gray-600">
+                                        <label for="overall-course-rating" className="block p-1 text-gray-900">
                                             Overall Course Rating
                                         </label>
-                                        <input type="number" min="0.1" max="5" step="0.1" className="w-full p-2 text-gray-600 border rounded-md focus:outline-none focus:border-indigo-500" placeholder="1-5" />
+                                        <input type="number" min="0.1" max="5" step="0.1" className="w-full p-2 text-gray-600 border rounded-md focus:outline-none focus:border-blue-500" placeholder="1-5" />
                                     </div>
 
                                     <div>
-                                        <label for="difficulty" className="block p-1 text-gray-600">
+                                        <label for="difficulty" className="block p-1 text-gray-900">
                                             Difficulty Rating
                                         </label>
-                                        <input type="number" min="0.1" max="5" step="0.1" className="w-full p-2 text-gray-600 border rounded-md focus:outline-none focus:border-indigo-500" placeholder="1-5" />
+                                        <input type="number" min="0.1" max="5" step="0.1" className="w-full p-2 text-gray-600 border rounded-md focus:outline-none focus:border-blue-500" placeholder="1-5" />
                                     </div>
 
                                     <div>
-                                        <label for="workload" className="block p-1 text-gray-600">
+                                        <label for="workload" className="block p-1 text-gray-900">
                                             Workload Rating
                                         </label>
-                                        <input type="number" min="0.1" max="5" step="0.1" className="w-full p-2 text-gray-600 border rounded-md focus:outline-none focus:border-indigo-500" placeholder="1-5" />
+                                        <input type="number" min="0.1" max="5" step="0.1" className="w-full p-2 text-gray-600 border rounded-md focus:outline-none focus:border-blue-500" placeholder="1-5" />
                                     </div>
 
                                     <div>
-                                        <label for="average-grade" className="block p-1 text-gray-600">
+                                        <label for="average-grade" className="block p-1 text-gray-900">
                                             Average Grade
                                         </label>
-                                        <input type="number" min="1" max="10" className="w-full p-2 text-gray-600 border rounded-md focus:outline-none focus:border-indigo-500" placeholder="1-10" />
+                                        <input type="number" min="1" max="10" className="w-full p-2 text-gray-600 border rounded-md focus:outline-none focus:border-blue-500" placeholder="1-10" />
                                     </div>                                   
 
                                 </div>
 
-                                <label for="review" className="block p-1 mt-3 text-gray-600">
+                                <label for="review" className="block p-1 mt-3 text-gray-900">
                                     Review
                                 </label>
                                 <textarea 
-                                    className="w-full p-2 text-gray-600 border rounded-md overflow-auto focus:outline-none focus:border-indigo-500" 
+                                    className="w-full p-2 text-gray-600 border rounded-md overflow-auto focus:outline-none focus:border-blue-500" 
                                     rows="6" 
                                     placeholder="Write your review here..."
                                 />
 
                                 {stateOfReview ? (
                                     
-                                <div className="flex items-center gap-3 mt-2">
-                                    <button className="block py-2 px-4 text-center text-white font-medium bg-indigo-600 duration-150 hover:bg-indigo-500 active:bg-indigo-700 rounded-lg shadow-lg hover:shadow-none"
+                                <div className="w-1/5 flex items-center gap-3 mt-2">
+                                    <button className="block w-1/2 py-2 px-4 text-center text-white font-medium bg-blue-600 duration-150 hover:bg-blue-500 active:bg-blue-700 rounded-lg shadow-lg hover:shadow-none"
                                         onClick={() => (setStateOfReview(false), setTimeout(() => (setState(false), setStateOfReview(true)), 5000))}
                                     >
-                                        Post
+                                        Submit
                                     </button>
-                                    <button className="flex items-center justify-center gap-x-2 py-2 px-4 text-gray-700 hover:text-gray-500 font-medium duration-150 active:bg-gray-100 border rounded-lg shadow-md md:inline-flex"
+                                    <button className="flex w-1/2 items-center justify-center gap-x-2 py-2 px-4 text-gray-700 hover:text-gray-500 font-medium duration-150 active:bg-gray-100 border rounded-lg shadow-md md:inline-flex"
                                         onClick={() => setState(false)}
                                     >
                                         Cancel
@@ -138,7 +138,7 @@ export default () => {
                 <section id='hero' className="py-28">
                     <div className="max-w-screen-xl mx-auto text-gray-600 gap-x-12 items-center justify-between overflow-hidden md:flex md:px-8">
                         <div className="flex-none space-y-5 px-4 sm:max-w-lg md:px-0 lg:max-w-xl">
-                            <h1 className="text-sm text-indigo-600 font-medium">
+                            <h1 className="text-sm text-blue-600 font-medium">
                                 Over 200 successful deals
                             </h1>
                             <h2 className="text-4xl text-gray-800 font-extrabold md:text-5xl">
@@ -150,12 +150,12 @@ export default () => {
                             <div className="items-center gap-x-3 space-y-3 sm:flex sm:space-y-0 cursor-pointer">
                                 <a 
                                     // href="#postreview" 
-                                    className="block py-2 px-4 text-center text-white font-medium bg-indigo-600 duration-150 hover:bg-indigo-500 active:bg-indigo-700 rounded-lg shadow-lg hover:shadow-none"
+                                    className="block py-2 px-4 text-center text-white font-medium bg-blue-600 duration-150 hover:bg-blue-500 active:bg-blue-700 rounded-lg shadow-lg hover:shadow-none"
                                     onClick={() => setState(true)}
                                 >
                                     Post a Review
                                 </a>
-                                <Link to="javascript:void(0)" className="flex items-center justify-center gap-x-2 py-2 px-4 text-gray-700 hover:text-gray-500 font-medium duration-150 active:bg-gray-100 border rounded-lg shadow-md md:inline-flex">
+                                <Link to="/courses" className="flex items-center justify-center gap-x-2 py-2 px-4 text-gray-700 hover:text-gray-500 font-medium duration-150 active:bg-gray-100 border rounded-lg shadow-md md:inline-flex">
                                     View Reviews
                                 </Link>
                             </div>

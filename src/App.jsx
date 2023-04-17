@@ -3,7 +3,7 @@ import LandingPage from './components/LandingPage'
 import SignUp from './components/SignUp'
 import SignIn from './components/SignIn'
 import Home from './components/Home'
-import PostReview from './components/PostReview'
+import Courses from './components/Courses'
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
 
 function App() {
@@ -14,7 +14,7 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/home" element={<Home />} />
-        <Route path="/postreview" element={<PostReview />} />
+        <Route path="/courses" element={<Courses />} />
       </Routes>
     </Router>
   )

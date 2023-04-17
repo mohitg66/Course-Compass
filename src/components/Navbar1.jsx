@@ -50,7 +50,7 @@
 //                     <div className="items-center space-y-5 md:flex md:space-x-6 md:space-y-0 md:ml-12">
 //                         {
 //                             navigation.map((item, idx) => (
-//                                 <li className="text-gray-500 hover:text-indigo-600" key={idx}>
+//                                 <li className="text-gray-500 hover:text-blue-600" key={idx}>
 //                                     <a href={item.path} onClick={(e) => scrollToSection(e, item.path)}>{item.title}
 //                                     </a>
 //                                 </li>
@@ -58,7 +58,7 @@
 //                         }
 //                     </div>
 //                     <li className="order-2 py-5 md:py-0">
-                        // <Link to="/signup" className="py-2 px-5 rounded-lg font-medium text-white text-center bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 duration-150 block md:py-3 md:inline">
+                        // <Link to="/signup" className="py-2 px-5 rounded-lg font-medium text-white text-center bg-blue-600 hover:bg-blue-500 active:bg-blue-700 duration-150 block md:py-3 md:inline">
                         //     Get started
                         // </Link>
 //                     </li>
@@ -97,7 +97,7 @@ import { Link } from "react-router-dom"
 //     return (
 //         <div className={`relative ${props.class}`}>
 //             <div className="flex items-center space-x-4">
-//                 <button ref={profileRef} className="w-10 h-10 outline-none rounded-full ring-offset-2 ring-gray-200 ring-2 lg:focus:ring-indigo-600"
+//                 <button ref={profileRef} className="w-10 h-10 outline-none rounded-full ring-offset-2 ring-gray-200 ring-2 lg:focus:ring-blue-600"
 //                     onClick={() => setState(!state)}
 //                 >
 //                     <img
@@ -190,7 +190,7 @@ export default () => {
                             class="hidden lg:block"
                         /> */}
 
-                        <Link to="/signup" className="py-2 px-5 rounded-lg whitespace-nowrap font-medium text-white text-center bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 duration-150 block md:py-3 md:inline">
+                        <Link to="/signup" className="py-2 px-5 rounded-lg whitespace-nowrap font-medium text-white text-center bg-blue-600 hover:bg-blue-500 active:bg-blue-700 duration-150 block md:py-3 md:inline">
                             Get started
                         </Link>
 

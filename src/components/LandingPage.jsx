@@ -11,6 +11,7 @@ export default () => {
     const navigation = [
         { title: "Features", path: "features" },
         { title: "Team", path: "team" },
+        { title: "Contact", path: "javascript:void(0)" },
     ]
 
     const features = [
@@ -99,8 +100,8 @@ export default () => {
         <div id='top' className="">
             {/* <div className="h-screen"> */}
             <nav className="sticky top-0 bg-white border-b">
-                <div className="flex items-center space-x-8 py-3 px-4 max-w-screen-xl mx-auto md:px-8">
-                    <div className="flex justify-between">
+                <div className="flex justify-between items-center py-3 px-4 max-w-screen-xl mx-auto md:px-8">
+                    <div className="w-full md:w-auto flex justify-between">
                         <a href="javascript:void(0) " onClick={(e) => scrollToSection(e, 'top')} >
                             <img
                                 src="https://www.floatui.com/logo.svg"
@@ -138,10 +139,10 @@ export default () => {
                             }
                         </div>
                         <li className="flex gap-4 py-5 md:py-0">
-                            <Link to="/signin" className="my-auto py-0 px-5 rounded-lg font-medium border border-indigo-600 text-indigo-600 text-center bg-white hover:bg-gray-100 active:bg-bg-white duration-150 block md:py-3 md:inline">
+                            <Link to="/signin" className="my-auto py-1 px-5 rounded-lg font-medium border border-blue-600 text-blue-600 text-center bg-white hover:bg-gray-100 active:bg-bg-white duration-150 block md:py-2 md:inline">
                                 Log in
                             </Link>
-                            <Link to="/signin" className="my-auto py-1 px-5 rounded-lg font-medium text-white text-center bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 duration-150 block md:py-3 md:inline">
+                            <Link to="/signin" className="my-auto py-1 px-5 rounded-lg font-medium text-white text-center bg-blue-600 hover:bg-blue-500 active:bg-blue-700 duration-150 block md:py-2 md:inline">
                                 Sign up
                             </Link>
                         </li>
@@ -152,9 +153,9 @@ export default () => {
             {/* <Navbar1 /> */}
 
             <section id='hero' className="py-28">
-                <div className="max-w-screen-xl mx-auto text-gray-600 gap-x-12 items-center justify-between overflow-hidden md:flex md:px-8">
+                <div className="max-w-screen-xl mx-auto text-gray-600 gap-x-12 gap-y-8 items-center justify-between overflow-hidden flex flex-col-reverse md:flex md:flex-row md:px-8">
                     <div className="flex-none space-y-5 px-4 sm:max-w-lg md:px-0 lg:max-w-xl">
-                        <h1 className="text-sm text-indigo-600 font-medium">
+                        <h1 className="text-sm text-blue-600 font-medium">
                             Over 200 successful deals
                         </h1>
                         <h2 className="text-4xl text-gray-800 font-extrabold md:text-5xl">
@@ -164,7 +165,7 @@ export default () => {
                             Sed ut perspiciatis unde omnis iste natus voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae.
                         </p>
                         <div className="items-center gap-x-3 space-y-3 sm:flex sm:space-y-0">
-                            <Link to="/signup" className="block py-2 px-4 text-center text-white font-medium bg-indigo-600 duration-150 hover:bg-indigo-500 active:bg-indigo-700 rounded-lg shadow-lg hover:shadow-none">
+                            <Link to="/signup" className="block py-2 px-4 text-center text-white font-medium bg-blue-600 duration-150 hover:bg-blue-500 active:bg-blue-700 rounded-lg shadow-lg hover:shadow-none">
                                 Get started
                             </Link>
                             {/* <Link to="/signup" className="flex items-center justify-center gap-x-2 py-2 px-4 text-gray-700 hover:text-gray-500 font-medium duration-150 active:bg-gray-100 border rounded-lg md:inline-flex">
@@ -175,7 +176,7 @@ export default () => {
                             </Link> */}
                         </div>
                     </div>
-                    <div className="flex-none mt-14 md:mt-0 md:max-w-lg">
+                    <div className="flex-none md:mt-0 md:max-w-lg">
                         <img
                             src={svg}
                             alt="img"
@@ -186,10 +187,10 @@ export default () => {
             {/* </div> */}
 
 
-            <section id='features' className="py-14 ">
+            <section id='features' className="py-14 pt-28">
                 <div className="max-w-screen-xl mx-auto px-4 text-gray-600 md:px-8">
                     <div className="max-w-xl space-y-3">
-                        <h3 className="text-indigo-600 font-semibold">
+                        <h3 className="text-blue-600 font-semibold">
                             Features
                         </h3>
                         <p className="text-gray-800 text-3xl font-semibold sm:text-4xl">
@@ -204,7 +205,7 @@ export default () => {
                             {
                                 features.map((item, idx) => (
                                     <li key={idx} className={`feature-${idx + 1} space-y-3 py-8 lg:px-12 sm:py-0`}>
-                                        <div className="w-12 h-12 border text-indigo-600 rounded-full flex items-center justify-center">
+                                        <div className="w-12 h-12 border text-blue-600 rounded-full flex items-center justify-center">
                                             {item.icon}
                                         </div>
                                         <h4 className="text-lg text-gray-800 font-semibold">
@@ -221,10 +222,10 @@ export default () => {
                 </div>
             </section>
 
-            <section id='team' className="py-14">
+            <section id='team' className="py-14 pt-28">
                 <div className="max-w-screen-xl mx-auto px-4 md:px-8">
                     <div className="max-w-xl space-y-3">
-                        <h3 className="text-indigo-600 font-semibold">
+                        <h3 className="text-blue-600 font-semibold">
                             Team
                         </h3>
                         <p className="text-gray-800 text-3xl font-semibold sm:text-4xl">

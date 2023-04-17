@@ -13,7 +13,7 @@ export default () => {
                     {/* <img src="https://floatui.com/logo.svg" width={150} className="mx-auto" /> */}
                     <div className="mt-5 space-y-2">
                         <h3 className="text-gray-800 text-2xl font-bold sm:text-3xl">Sign up</h3>
-                        <p className="">Already have an account? <Link to="/signin" className="font-medium text-indigo-600 hover:text-indigo-500">Log in</Link></p>
+                        <p className="">Already have an account? <Link to="/signin" className="font-medium text-blue-600 hover:text-blue-500">Log in</Link></p>
                     </div>
                 </div>
                 <form
@@ -24,13 +24,13 @@ export default () => {
                     <input
                             type="name"
                             required
-                            className="w-1/2 px-4 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
+                            className="w-1/2 px-4 py-2 text-gray-500 bg-transparent outline-none border focus:border-blue-600 shadow-sm rounded-lg"
                             placeholder='First Name'
                         />
                     <input
                             type="name"
                             required
-                            className="w-1/2 px-4 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
+                            className="w-1/2 px-4 py-2 text-gray-500 bg-transparent outline-none border focus:border-blue-600 shadow-sm rounded-lg"
                             placeholder='Last Name'
                         />
                     </div>
@@ -38,7 +38,7 @@ export default () => {
                         <input
                             type="email"
                             required
-                            className="w-full px-4 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
+                            className="w-full px-4 py-2 text-gray-500 bg-transparent outline-none border focus:border-blue-600 shadow-sm rounded-lg"
                             placeholder='Email address'
                         />
                     </div>
@@ -46,7 +46,7 @@ export default () => {
                         <input
                             type="password"
                             required
-                            className="w-full px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
+                            className="w-full px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-blue-600 shadow-sm rounded-lg"
                             placeholder='Password'
                         />
                     </div>
@@ -55,14 +55,14 @@ export default () => {
                     < Degree />
 
                     <input
-                        className="w-full px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
+                        className="w-full px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-blue-600 shadow-sm rounded-lg"
                         type="number" 
                         placeholder='Year of Graduation'
                     />
 
                     <Link to='/home'>
                         <button
-                            className="w-full px-4 py-2 mt-5 text-white font-medium bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-600 rounded-lg duration-150"
+                            className="w-full px-4 py-2 mt-5 text-white font-medium bg-blue-600 hover:bg-blue-500 active:bg-blue-600 rounded-lg duration-150"
                         >
                             Sign Up
                         </button>
