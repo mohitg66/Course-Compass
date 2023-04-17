@@ -61,17 +61,17 @@ you can follow these steps to install Node.js on your system:
 
 ### Cloning the repository
 ```bash
-    git clone https://github.com/mohitg66/course-compass.git
-    cd course-compass
+git clone https://github.com/mohitg66/course-compass.git
+cd course-compass
 ```
 
 ### Running the project
 ```bash
-    # install the dependencies
-    npm install
-    
-    # start the development server
-    npm run dev
+# install the dependencies
+npm install
+
+# start the development server
+npm run dev
 ```
 
 ## Demo
