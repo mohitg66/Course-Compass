@@ -4,6 +4,7 @@ import Contact1 from "./Contact1"
 import Navbar1 from "./Navbar1"
 import svg from "/images/WorkConfused.svg"
 import logo from "/images/logo.svg"
+import profileIcon from "/images/profileIcon.png"
 
 export default () => {
 
@@ -237,7 +238,7 @@ export default () => {
                                     <li key={idx} className="flex gap-4 items-center">
                                         <div className="flex-none w-24 h-24">
                                             <img
-                                                src={item.avatar}
+                                                src={profileIcon}
                                                 className="w-full h-full rounded-full"
                                                 alt=""
                                             />
