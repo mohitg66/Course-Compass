@@ -52,28 +52,28 @@ export default () => {
                                         <label for="overall-course-rating" className="block p-1 text-gray-900">
                                             Overall Course Rating
                                         </label>
-                                        <input type="number" min="0.1" max="5" step="0.1" className="w-full p-2 text-gray-600 border rounded-md focus:outline-none focus:border-blue-500" placeholder="1-5" />
+                                        <input required type="number" min="0.1" max="5" step="0.1" className="w-full p-2 text-gray-600 border rounded-md focus:outline-none focus:border-blue-500" placeholder="1-5" />
                                     </div>
 
                                     <div>
                                         <label for="difficulty" className="block p-1 text-gray-900">
-                                            Difficulty Rating
+                                            Difficulty
                                         </label>
-                                        <input type="number" min="0.1" max="5" step="0.1" className="w-full p-2 text-gray-600 border rounded-md focus:outline-none focus:border-blue-500" placeholder="1-5" />
+                                        <input required type="number" min="1" max="4" className="w-full p-2 text-gray-600 border rounded-md focus:outline-none focus:border-blue-500" placeholder="1(Low) - 4(Extreme)" />
                                     </div>
 
                                     <div>
                                         <label for="workload" className="block p-1 text-gray-900">
-                                            Workload Rating
+                                            Workload
                                         </label>
-                                        <input type="number" min="0.1" max="5" step="0.1" className="w-full p-2 text-gray-600 border rounded-md focus:outline-none focus:border-blue-500" placeholder="1-5" />
+                                        <input required type="number" min="1" max="4" className="w-full p-2 text-gray-600 border rounded-md focus:outline-none focus:border-blue-500" placeholder="1(Low) - 4(Extreme)" />
                                     </div>
 
                                     <div>
                                         <label for="average-grade" className="block p-1 text-gray-900">
                                             Average Grade
                                         </label>
-                                        <input type="number" min="1" max="10" className="w-full p-2 text-gray-600 border rounded-md focus:outline-none focus:border-blue-500" placeholder="1-10" />
+                                        <input required type="number" min="1" max="10" className="w-full p-2 text-gray-600 border rounded-md focus:outline-none focus:border-blue-500" placeholder="1-10" />
                                     </div>                                   
 
                                 </div>
@@ -82,6 +82,7 @@ export default () => {
                                     Review
                                 </label>
                                 <textarea 
+                                    required
                                     className="w-full p-2 text-gray-600 border rounded-md overflow-auto focus:outline-none focus:border-blue-500" 
                                     rows="6" 
                                     placeholder="Write your review here..."
@@ -90,7 +91,7 @@ export default () => {
                                 {stateOfReview ? (
                                     
                                 <div className="w-1/5 flex items-center gap-3 mt-2">
-                                    <button className="block w-1/2 py-2 px-4 text-center text-white font-medium bg-blue-600 duration-150 hover:bg-blue-500 active:bg-blue-700 rounded-lg shadow-lg hover:shadow-none"
+                                    <button type="submit" className="block w-1/2 py-2 px-4 text-center text-white font-medium bg-blue-600 duration-150 hover:bg-blue-500 active:bg-blue-700 rounded-lg shadow-lg hover:shadow-none"
                                         onClick={() => (setStateOfReview(false), setTimeout(() => (setState(false), setStateOfReview(true)), 5000))}
                                     >
                                         Submit

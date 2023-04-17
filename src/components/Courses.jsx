@@ -1,12 +1,16 @@
+import { Link } from "react-router-dom"
 import CourseCard from "./CourseCard"
+import Sort from "./home/Sort"
 import Navbar2 from "./Navbar2"
 
 export default () => {
 
     const courses = [
         // fill it with random names, but each should have different values for each key
-        {
+        {   
+            id: 1,
             title: "Computer Organization",
+            code: "CS F211",
             instructors: ["Amit Kumar", "Rahul Agarwal"],
             institute: "IIITD",
             rating: 4.8,
@@ -14,9 +18,12 @@ export default () => {
             difficulty: "Low",     // Low, Medium, Hard, Extreme
             workload: "Low",        // Low, Medium, High, Extreme
             size: 600,
+            average_grade: 8,
         },
         {
+            id: 2,
             title: "Introduction to Programming",
+            code: "CS F111",
             instructors: ["Pranav Kumar", "Parth Kumar"],
             institute: "IIITD",
             rating: 4.5,
@@ -24,9 +31,12 @@ export default () => {
             difficulty: "High",
             workload: "High",
             size: 600,
+            average_grade: 9,
         },
         {
+            id: 3,
             title: "Computer Networks",
+            code: "CS F212",
             instructors: ["John Doe", "Gaurav Verma"],
             institute: "IIITD",
             rating: 4.5,
@@ -34,9 +44,12 @@ export default () => {
             difficulty: "Extreme",
             workload: "Medium",
             size: 600,
+            average_grade: 8,
         },
         {
+            id: 4,
             title: "Discrete Mathematics",
+            code: "MTH F112",
             instructors: ["Rahul Agarwal", "Bhavesh Agarwal"],
             institute: "IIITD",
             rating: 4.1,
@@ -44,9 +57,12 @@ export default () => {
             difficulty: "Medium",
             workload: "Medium",
             size: 300,
+            average_grade: 8,
         },
         {
+            id: 5,
             title: "Data Structures and Algorithms",
+            code: "MTH F213",
             instructors: ["Siddharth Agarwal", "Lakshay Agarwal"],
             institute: "IIITD",
             rating: 4.5,
@@ -54,9 +70,12 @@ export default () => {
             difficulty: "High",
             workload: "High",
             size: 600,
+            average_grade: 6,
         },
         {
+            id: 6,
             title: "Multivariable Calculus",
+            code: "MTH F211",
             instructors: ["Nishant Arora", "Gaurav Verma"],
             institute: "IIITD",
             rating: 4.5,
@@ -64,9 +83,12 @@ export default () => {
             difficulty: "Extreme",
             workload: "Medium",
             size: 600,
+            average_grade: 7,
         },
         {
+            id: 7,
             title: "Linear Algebra",
+            code: "MTH F212",
             instructors: ["Anirudh Verma", "Chirag Agarwal"],
             institute: "IIITD",
             rating: 4.1,
@@ -74,9 +96,12 @@ export default () => {
             difficulty: "Medium",
             workload: "Medium",
             size: 300,
+            average_grade: 7,
         },
         {
+            id: 8,
             title: "Sociological Theory",
+            code: "SSH F211",
             instructors: ["Siddharth Agarwal", "Lakshay Agarwal"],
             institute: "IIITD",
             rating: 4.5,
@@ -84,6 +109,7 @@ export default () => {
             difficulty: "Low",
             workload: "Medium",
             size: 100,
+            average_grade: 7,
         }
     ]
 
@@ -195,6 +221,46 @@ export default () => {
                             </div>
                         </div>
 
+                        <div className="flex flex-col gap-1 p-2">
+                            <p className="font-medium"> Average Grade </p>
+                            <div className="flex flex-col pl-2 text-sm">
+                                <div>
+                                    <input type="checkbox" id="4.5" name="4.5" value="4.5" />
+                                    <label for="4.5"> 4 </label>
+                                </div>
+
+                                <div>
+                                    <input type="checkbox" id="4.0" name="4.0" value="4.0" />
+                                    <label for="4.0"> 5 </label>
+                                </div>
+
+                                <div>
+                                    <input type="checkbox" id="3.5" name="3.5" value="3.5" />
+                                    <label for="3.5"> 6 </label>
+                                </div>
+
+                                <div>
+                                    <input type="checkbox" id="3.0" name="3.0" value="3.0" />
+                                    <label for="3.0"> 7 </label>
+                                </div>
+
+                                <div>
+                                    <input type="checkbox" id="3.0" name="3.0" value="3.0" />
+                                    <label for="3.0"> 8 </label>
+                                </div>
+
+                                <div>
+                                    <input type="checkbox" id="3.0" name="3.0" value="3.0" />
+                                    <label for="3.0"> 9 </label>
+                                </div>
+
+                                <div>
+                                    <input type="checkbox" id="3.0" name="3.0" value="3.0" />
+                                    <label for="3.0"> 10 </label>
+                                </div>
+                            </div>
+                        </div>
+
 
                         <div className="flex flex-col gap-1 p-2">
                             <p className="font-medium"> Difficulty </p>
@@ -263,26 +329,32 @@ export default () => {
                                 </div>
                             </div>
                         </div>
-
-
                     </div>
 
                 </div>
 
 
                 <div id="courses" className="w-5/6 px-10 py-2">
-                    <div className="text-gray-800 text-base mb-4">
-                        Displaying search results
+                    <div className="flex flex-row justify-between items-center mb-5">
+                        <div className="text-gray-800 text-base self-center">
+                            Displaying search results
+                        </div>
+
+                        <Sort />
+                        
                     </div>
 
-                    <div className=" flex flex-col gap-3 ">
-                        {
-                            courses.map((course) => (
+                    <div className="flex flex-col gap-3">
+                        {courses.map((course) => (
+                            <Link
+                                key={course.id}
+                                to={`/courses/${course.id}`}
+                            >
                                 <CourseCard course={course} />
-                            ))
-                        }
-
+                            </Link>
+                        ))}
                     </div>
+
                 </div>
 
             </div>
