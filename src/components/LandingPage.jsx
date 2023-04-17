@@ -94,7 +94,7 @@ export default () => {
         <>
         <div id='top' className="">
             {/* <div className="h-screen"> */}
-            <nav className="sticky top-0 bg-white border-b shadow">
+            <nav className="sticky top-0 bg-white border-b shadow py-1.5">
                 <div className="flex justify-between items-center py-3 px-4 max-w-screen-xl mx-auto md:px-8">
                     <div className="w-full md:w-auto flex justify-between">
                         <a href="javascript:void(0) " onClick={(e) => scrollToSection(e, 'top')} >

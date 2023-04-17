@@ -8,16 +8,16 @@ export default () => {
             avatar: "https://www.iiitd.ac.in/sites/default/files/images/logo/logo.jpg"
         }, {
             name: "NSUT",
-            avatar: "https://api.uifaces.co/our-content/donated/xZ4wg2Xj.jpg"
+            avatar: "https://upload.wikimedia.org/wikipedia/commons/e/e4/NSUT_logo.png"
         }, {
             name: "DTU",
-            avatar: "https://randomuser.me/api/portraits/men/86.jpg"
+            avatar: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQapjqO7-OYGDHf6U1yvQEUSVe3B6rfb0-roepw7cw4WA&s"
         }, {
             name: "IGDTU",
-            avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=a72ca28288878f8404a795f39642a46f"
+            avatar: "https://www.igdtuw.ac.in/images/log.jpg"
         }, {
             name: "GGSIPU",
-            avatar: "https://randomuser.me/api/portraits/men/46.jpg"
+            avatar: "https://upload.wikimedia.org/wikipedia/en/thumb/b/b8/GGSIU_logo.svg/1200px-GGSIU_logo.svg.png"
         },
     ]
 
