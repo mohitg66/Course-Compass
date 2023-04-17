@@ -139,14 +139,14 @@ export default () => {
                 <section id='hero' className="py-28">
                     <div className="max-w-screen-xl mx-auto text-gray-600 gap-x-12 items-center justify-between overflow-hidden md:flex md:px-8">
                         <div className="flex-none space-y-5 px-4 sm:max-w-lg md:px-0 lg:max-w-xl">
-                            <h1 className="text-sm text-blue-600 font-medium">
+                            {/* <h1 className="text-sm text-blue-600 font-medium">
                                 Over 200 successful deals
-                            </h1>
+                            </h1> */}
                             <h2 className="text-4xl text-gray-800 font-extrabold md:text-5xl">
-                                We help startups to grow and make money
+                                Detailed qualitative and quantitaive course reviews
                             </h2>
                             <p>
-                                Sed ut perspiciatis unde omnis iste natus voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae.
+                                With Course Compass, you can easily search and compare courses based on factors such as difficulty, workload, average grade, class size and overall quality.
                             </p>
                             <div className="items-center gap-x-3 space-y-3 sm:flex sm:space-y-0 cursor-pointer">
                                 <a 

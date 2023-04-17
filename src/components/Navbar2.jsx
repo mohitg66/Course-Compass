@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react"
 import profileIcon from "/images/profileIcon.png"
 import { Link } from "react-router-dom"
+import logo from "/images/logo.svg"
 
 // Profile Dropdown
 const ProfileDropDown = (props) => {
@@ -60,7 +61,7 @@ export default () => {
   // Replace javascript:void(0) path with your path
   const navigation = [
       { title: "Courses", path: "/courses" },
-      { title: "Contact", path: "javascript:void(0)" },
+      { title: "Contact", path: "/contact" },
     //   { title: "Guides", path: "javascript:void(0)" },
     //   { title: "Partners", path: "javascript:void(0)" },
   ]
@@ -70,10 +71,10 @@ export default () => {
                 <div className="flex-none lg:flex-initial">
                     <Link to="/home ">
                         <img
-                            src="https://www.floatui.com/logo.svg" 
-                            width={120} 
-                            height={50}
-                            alt="Float UI logo"
+                            src={logo} 
+                            width="60"
+                            // height={50}
+                            alt="logo"
                         />
                     </Link>
                 </div>

@@ -324,7 +324,7 @@ export default () => {
                                 </div> */}
                                 <div className="flex items-center gap-3">
                                     <label for="classSize"> 0 </label>
-                                    <input type="range" id="classSize" name="classSize" min="0" max="600" />
+                                    <input type="range" id="classSize" name="classSize" min="0" max="1000" />
                                     <label for="classSize"> 1000 </label>
                                 </div>
                             </div>
@@ -334,9 +334,9 @@ export default () => {
                 </div>
 
 
-                <div id="courses" className="w-5/6 px-10 py-2">
+                <div id="courses" className="w-5/6 px-10 py-0">
                     <div className="flex flex-row justify-between items-center mb-5">
-                        <div className="text-gray-800 text-base self-center">
+                        <div className="text-gray-800 text-base self-end">
                             Displaying search results
                         </div>
 
