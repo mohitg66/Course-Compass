@@ -7,6 +7,7 @@ import Courses from './components/Courses'
 import CoursePage from './components/CoursePage'
 import Contact1 from './components/Contact1'
 import Contact2 from './components/Contact2'
+import Compare from './components/Compare'
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
         <Route path="/courses/:id" element={<CoursePage />} />
         <Route path="/contact1" element={<Contact1 />} />
         <Route path="/contact" element={<Contact2 />} />
+        <Route path="/compare" element={<Compare />} />
       </Routes>
     </Router>
   )

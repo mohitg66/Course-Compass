@@ -1,18 +1,9 @@
 import { useEffect, useRef, useState } from "react"
+import courses from "../../constants/courses"
 
 export default () => {
 
-    const menuItems = [
-        {
-            name: "Multivariate Calculus",
-            label: "MTH203"
-            // avatar: "https://randomuser.me/api/portraits/women/79.jpg"
-        }, {
-            name: "Discrete Mathematics",
-            label: "MTH121"
-            // avatar: "https://api.uifaces.co/our-content/donated/xZ4wg2Xj.jpg"
-        },
-    ]
+    const menuItems = courses
 
     const [selectedItem, setSelectedItem] = useState({
         item: menuItems[0],
@@ -35,7 +26,7 @@ export default () => {
 
         menuEls.forEach((el, idx) => {
             el.classList.remove("hidden")
-            if (!menuItems[idx].name.toLocaleLowerCase().includes(searchVal)) {
+            if (!menuItems[idx].title.toLocaleLowerCase().includes(searchVal)) {
                 el.classList.add("hidden")
             }
         })
@@ -72,7 +63,7 @@ export default () => {
                     </div>
                 ) : (
 
-                    <button className="label-button flex items-center gap-2 w-full px-3 py-2 text-gray-500 bg-white border rounded-md shadow-sm cursor-default outline-none focus:border-primary-600"
+                    <button className="h-full label-button flex items-center gap-2 w-full px-3 py-2 text-gray-500 bg-white border rounded-md shadow-sm cursor-default outline-none focus:border-primary-600"
                         aria-haspopup="true"
                         aria-expanded="true"
                         aria-labelledby="listbox-label"
@@ -80,7 +71,7 @@ export default () => {
                     >
                         {/* <img src={selectedItem.item.avatar} className="w-6 h-6 rounded-full" /> */}
                         <div className="flex-1 text-left flex items-center gap-x-1">
-                            {selectedItem.item.name}
+                            {selectedItem.item.title}
                         </div>
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5 text-gray-400">
                             <path fillRule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clipRule="evenodd" />
@@ -91,7 +82,7 @@ export default () => {
 
             {
                 state ? (
-                    <div className="relative w-full">
+                    <div className="relative w-full h-full">
                         <ul ref={listboxRef} className="absolute w-full mt-3 overflow-y-auto bg-white border rounded-md shadow-sm max-h-64" role="listbox">
                             <li id="li-alert" className="hidden px-3 py-2 text-center text-gray-600">Not results available</li>
                             {
@@ -109,10 +100,10 @@ export default () => {
                                         {/* <img src={el.avatar} className="w-6 h-6 rounded-full" /> */}
                                         <div className="flex-col">
                                             <div className="flex-1 text-left flex items-center gap-x-1">
-                                                {el.name} 
+                                                {el.title} 
                                             </div>
                                             <div className="flex-1 text-left flex items-center gap-x-1 text-xs">
-                                                {el.label}
+                                                {el.code}
                                             </div>
                                         </div>
                                         {
