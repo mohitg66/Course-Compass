@@ -2,14 +2,15 @@
 // import { useState } from "react";
 import Navbar2 from "./Navbar2";
 import courses from "../constants/courses";
-// import CourseMenu from src\components\courses\CourseMenu.jsx
-// import Course from "./home/Course"
+// import selections from "../constants/selections";
 
 export default () => {
     // const id1 = 1;
     // const id2 = 1;
     // const id3 = 1;
-    const selectedId = [1, 2, 3];
+    // const selectedId = [1, 2, 3];
+    let selectedId = [1, 2, 3];
+    // let selectedId= selections;
 
     const selectedCourse = [];
     selectedCourse[0] = courses.find((course) => course.id == selectedId[0]);

@@ -48,11 +48,15 @@ export default () => {
                 </div>
               </div>
               <div className="items-center gap-2 mt-3 sm:flex">
-                <button className="w-full mt-2 p-2.5 flex-1 text-white bg-blue-600 rounded-md outline-none hover:bg-blue-500 focus:bg-blue-700"
-                  onClick={() => setState(false)}
-                >
-                  Compare
-                </button>
+                {/* <Link */}
+                  {/* // to= "/compare" */}
+                  {/* > */}
+                  <button className="w-full mt-2 p-2.5 flex-1 border-blue-600 text-white bg-blue-600 rounded-md outline-none hover:bg-blue-500 focus:bg-blue-700"
+                    onClick={() => (setState(false), window.location.href = "/compare")}
+                  >
+                    Compare
+                  </button>
+                {/* </Link> */}
                 <button className="w-full mt-2 p-2.5 flex-1 text-gray-800 rounded-md outline-none border hover:bg-gray-100 focus:bg-gray-200"
                   onClick={() => setState(false)}
                 >
@@ -180,7 +184,7 @@ export default () => {
                 tabIndex={0}
                 role="link"
               >
-                Khatab wedaa
+                Bob Smith
               </a>
             </div>
             <img
