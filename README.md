@@ -82,9 +82,9 @@ npm run dev
 
 | Name | Roll No. | Email |
 | ---- | -------- | ----- |
+| Mohit Gupta | 2021339 | mohit21339@iiitd.ac.in |
 | Abhinav Sharma | 2021303 | abhinav21303@iiitd.ac.in |
 | Devank Singh | 2021320 | devank21320@iiitd.ac.in |
-| Mohit Gupta | 2021339 | mohit21339@iiitd.ac.in |
 | Param Kumar | 2021340 | param21340@iiitd.ac.in |
 | Harsh Bhardwaj | 2021322 | harsh21332@iiitd.ac.in |
 
