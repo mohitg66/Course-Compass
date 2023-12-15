@@ -2,7 +2,7 @@
 *Welcome to Course Compass, the ultimate college courses guide!*
 
 ## Introduction
-Course Compass is a website designed to help students make informed decisions about the elective courses they take during their academic career. Our website provides a user-friendly interface that allows students to search, compare, and select elective courses based on their interests, academic requirements, and personal preferences.
+Course Compass is a website designed to help students make informed decisions about the elective courses they take during their academic career. The website provides a user-friendly interface that allows students to search, compare, and select elective courses based on their interests, academic requirements, and personal preferences.
 
 <img src="public\images\homepage.png" />
 
