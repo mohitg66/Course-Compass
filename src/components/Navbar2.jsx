@@ -60,8 +60,8 @@ export default () => {
 
   // Replace javascript:void(0) path with your path
   const navigation = [
-      { title: "Courses", path: "/courses" },
-      { title: "Contact", path: "/contact" },
+      { title: "Courses", path: "courses" },
+      { title: "Contact", path: "contact" },
     //   { title: "Guides", path: "javascript:void(0)" },
     //   { title: "Partners", path: "javascript:void(0)" },
   ]

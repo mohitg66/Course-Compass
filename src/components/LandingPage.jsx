@@ -13,7 +13,7 @@ export default () => {
     // Replace javascript:void(0) path with your path
     const navigation = [
         { title: "Features", path: "features" },
-        { title: "Team", path: "team" },
+        // { title: "Team", path: "team" },
         { title: "Contact", path: "contact" },
     ]
 
