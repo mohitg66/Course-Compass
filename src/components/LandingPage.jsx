@@ -81,6 +81,7 @@ export default () => {
             twitter: "javascript:void(0)",
         },
     ]
+
     const scrollToSection = (event, sectionId) => {
         event.preventDefault();
         const section = document.getElementById(sectionId);
@@ -161,7 +162,7 @@ export default () => {
                             With Course Compass, you can easily search and compare courses based on factors such as difficulty, workload, average grade, class size and overall quality.
                         </p>
                         <div className="items-center gap-x-3 space-y-3 sm:flex sm:space-y-0">
-                            <Link to="/signup" className="block py-2 px-4 text-center text-white font-medium bg-blue-600 duration-150 hover:bg-blue-500 active:bg-blue-700 rounded-lg shadow-lg hover:shadow-none">
+                            <Link to="/home" className="block py-2 px-4 text-center text-white font-medium bg-blue-600 duration-150 hover:bg-blue-500 active:bg-blue-700 rounded-lg shadow-lg hover:shadow-none">
                                 Get started
                             </Link>
                             {/* <Link to="/signup" className="flex items-center justify-center gap-x-2 py-2 px-4 text-gray-700 hover:text-gray-500 font-medium duration-150 active:bg-gray-100 border rounded-lg md:inline-flex">
@@ -218,7 +219,7 @@ export default () => {
                 </div>
             </section>
 
-            <section id='team' className="py-14 pt-28">
+            {/* <section id='team' className="py-14 pt-28">
                 <div className="max-w-screen-xl mx-auto px-4 md:px-8">
                     <div className="max-w-xl space-y-3">
                         <h3 className="text-blue-600 font-semibold">
@@ -261,7 +262,7 @@ export default () => {
                         </ul>
                     </div>
                 </div>
-            </section>
+            </section> */}
 
             <section id="contact" className="py-14 my-14">
                 <Contact1 />

@@ -24,7 +24,7 @@ export default () => {
     }
 
     return (
-        <div className="h-screen">
+        <div className="h-screen flex flex-col">
 
             {/* {state ? (
         <div className="fixed inset-0 z-30 overflow-y-auto">
@@ -74,12 +74,12 @@ export default () => {
 
 
             <Navbar2 />
-
-            <div className="max-w-screen-xl py-6 mx-auto flex flex-row gap-8 justify-between box-border">
+            <div className="flex flex-1">
+            
+            <div className="max-w-screen-xl self-center py-6 mx-auto flex flex-row gap-8 justify-between box-border">
 
                 {selectedCourse.map((course1) => {
                     return (
-
 
                         <div className="bg-white h-full border rounded-2xl shadow-md w-1/3">
                             <div className="flex flex-col w-full h-80 gap-2 justify-between bg-primary-600 text-primary-50 p-6 rounded-2xl shadow-md">
@@ -361,6 +361,7 @@ export default () => {
                         </div>
                     </div>
                 </div> */}
+            </div>
             </div>
 
 

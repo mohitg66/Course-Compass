@@ -4,10 +4,13 @@ import Navbar2 from "./Navbar2";
 import courses from "../constants/courses";
 // import CourseMenu from src\components\courses\CourseMenu.jsx
 import Course from "./home/Course"
+import like from "/images/like.png"
+import liked from "/images/liked.png"
 
 export default () => {
   const { id } = useParams();
   const [state, setState] = useState(false)
+  const [likeState, setLikeState] = useState(true)
 
   const course = courses.find((course) => course.id == id);
 
@@ -201,6 +204,35 @@ export default () => {
               in modi ratione libero!
             </p>
           </div>
+
+          <div className="flex flex-col items-start gap-1 justify-start">
+            {
+              likeState ? (
+                <a
+                  onClick={() => setLikeState(false)}
+                >
+                  <img
+                    className="h-6 w-6 mt-3"
+                    src={like}
+                  />
+                </a>
+              ) : (
+                <a
+                  onClick={() => setLikeState(true)}
+                >
+
+                  <img
+                    className="h-6 w-6 mt-3"
+                    src={liked}
+                  />
+                </a>
+              )
+            }
+            <div className="text-xs text-center pl-0.5">
+              <p>125</p>
+            </div>
+          </div>
+
         </div>
 
         <div className="max-w-screen-xl mx-auto px-12 py-6 bg-white border rounded-lg shadow dark:bg-gray-800">
@@ -235,6 +267,35 @@ export default () => {
               in modi ratione libero!
             </p>
           </div>
+
+          <div className="flex flex-col items-start gap-1 justify-start">
+            {
+              likeState ? (
+                <a
+                  onClick={() => setLikeState(false)}
+                >
+                  <img
+                    className="h-6 w-6 mt-3"
+                    src={like}
+                  />
+                </a>
+              ) : (
+                <a
+                  onClick={() => setLikeState(true)}
+                >
+
+                  <img
+                    className="h-6 w-6 mt-3"
+                    src={liked}
+                  />
+                </a>
+              )
+            }
+            <div className="text-xs text-center pl-0.5">
+              <p>125</p>
+            </div>
+          </div>
+
         </div>
 
         <div className="max-w-screen-xl mx-auto px-12 py-6 bg-white border rounded-lg shadow dark:bg-gray-800">
@@ -269,6 +330,35 @@ export default () => {
               in modi ratione libero!
             </p>
           </div>
+
+          <div className="flex flex-col items-start gap-1 justify-start">
+            {
+              likeState ? (
+                <a
+                  onClick={() => setLikeState(false)}
+                >
+                  <img
+                    className="h-6 w-6 mt-3"
+                    src={like}
+                  />
+                </a>
+              ) : (
+                <a
+                  onClick={() => setLikeState(true)}
+                >
+
+                  <img
+                    className="h-6 w-6 mt-3"
+                    src={liked}
+                  />
+                </a>
+              )
+            }
+            <div className="text-xs text-center pl-0.5">
+              <p>125</p>
+            </div>
+          </div>
+
         </div>
 
         <div className="max-w-screen-xl mx-auto px-12 py-6 bg-white border rounded-lg shadow dark:bg-gray-800">
@@ -303,6 +393,35 @@ export default () => {
               in modi ratione libero!
             </p>
           </div>
+
+          <div className="flex flex-col items-start gap-1 justify-start">
+            {
+              likeState ? (
+                <a
+                  onClick={() => setLikeState(false)}
+                >
+                  <img
+                    className="h-6 w-6 mt-3"
+                    src={like}
+                  />
+                </a>
+              ) : (
+                <a
+                  onClick={() => setLikeState(true)}
+                >
+
+                  <img
+                    className="h-6 w-6 mt-3"
+                    src={liked}
+                  />
+                </a>
+              )
+            }
+            <div className="text-xs text-center pl-0.5">
+              <p>125</p>
+            </div>
+          </div>
+          
         </div>
       </div>
 
