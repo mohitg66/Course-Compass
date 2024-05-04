@@ -9,14 +9,17 @@ import Contact1 from './components/Contact1'
 import Contact2 from './components/Contact2'
 import Compare from './components/Compare'
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
+import SignOut from './components/SignOut'
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<LandingPage />} />
+        <Route path="/" element={<Home />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/signin" element={<SignIn />} />
+        <Route path="/login" element={<SignIn />} />
+        <Route path="/logout" element={<SignOut />} />
         <Route path="/home" element={<Home />} />
         <Route path="/courses" element={<Courses />} />
         <Route path="/courses/:id" element={<CoursePage />} />

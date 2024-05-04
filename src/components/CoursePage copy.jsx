@@ -5,21 +5,15 @@ import Navbar2 from "./Navbar2";
 // import courses from "../constants/courses";
 // import CourseMenu from src\components\courses\CourseMenu.jsx
 import Course from "./home/Course"
-import like from "/images/upvote.svg"
-import liked from "/images/upvoted.svg"
-import report from "/images/report.svg"
+import like from "/images/like.png"
+import liked from "/images/liked.png"
 
 export default () => {
   const { id } = useParams();
 
   const [course, setCourse] = useState(null);
   useEffect(() => {
-    axios.get(`http://127.0.0.1:8000/api/courses/${id}/`, {
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${localStorage.getItem('access_token')}`
-      }
-    })
+    axios.get(`http://127.0.0.1:8000/api/courses/${id}/`)
     .then(response => setCourse(response.data))
     .catch(error => console.error(error));
   }, []);
@@ -28,65 +22,43 @@ export default () => {
   
   const [state, setState] = useState(false);
   
-  const [likeStates, setLikeStates] = useState({});
+  const [likeStates, setLikeStates] = useState([]);
   useEffect(() => {
     // Initialize like states for each review id
-    if (course && course.get_reviews) {
-      const initialLikeStates = {};
-      course.get_reviews.forEach(review => {
-        initialLikeStates[review.id] = false;
-      });
-      setLikeStates(initialLikeStates);
-    }
-  }, [course]);
+    const initialLikeStates = course.get_reviews.map(() => true);
+    setLikeStates(initialLikeStates);
+  }, [course.get_reviews]);
 
-  const setLikeState = (reviewId, value) => {
-    console.log(reviewId, value);
-    // Update like state for review id
-    setLikeStates(prevState => ({
-      ...prevState,
-      [reviewId]: value
-    }));
-
-    // Update like count for review id
-    axios.post(`http://127.0.0.1:8000/api/reviews/${reviewId}/like/`, {
-      user_id: localStorage.getItem('user_id'),
-      like: value
-    }, {
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${localStorage.getItem('access_token')}`
-      }
-    })
-      .then(response => {
-        console.log(response);
-      })
-      .catch(error => console.error(error));
-  };
-
-  const sendReport = (reviewId) => {
-    confirm('Are you sure you want to report this comment? This action cannot be undone.') &&
-    axios.post(`http://127.0.0.1:8000/api/reviews/${reviewId}/report/`, {
-      user_id: localStorage.getItem('user_id')
-    }, {
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${localStorage.getItem('access_token')}`
-      }
-    })
-      .then(response => {
-        console.log(response);
-      })
-      .catch(error => console.error(error));
+  const setLikeState = (index, value) => {
+    const newLikeStates = [...likeStates];
+    newLikeStates[index] = value;
+    setLikeStates(newLikeStates);
   };
 
   if (!course) {
     return <div>Course not found</div>;
   }
 
+  // const [courses, setCourses] = useState([]);
+
+  // useEffect(() => {
+  //   // Fetch courses
+  //   axios.get('http://127.0.0.1:8000/api/courses/')
+  //     .then((response) => {
+  //       setCourses(response.data.map((course_) => ({
+  //         value: course_.id,
+  //         label: course_.name,
+  //       })));
+  //     })
+  //     .catch((error) => {
+  //       console.error('Error fetching courses:', error);
+  //     });
+  // }, []);
+
+  // console.log(courses);
+
   return (
     <div>
-      <div>
       {/* {state ? (
         <div className="fixed inset-0 z-30 overflow-y-auto">
           <div className="fixed inset-0 w-full h-full bg-black opacity-40" onClick={() => setState(false)}></div>
@@ -145,7 +117,6 @@ export default () => {
           </div>
         </div>
       ) : ''}  */}
-      </div>
    
 
       <Navbar2 />
@@ -161,9 +132,9 @@ export default () => {
 
             <div className="flex flex-row justify-center divide-x">
               <div className="flex flex-row divide-x-2 ml-2 divide-primary-300">
-                {course.get_instructors ? Object.keys(course.get_instructors).map((instructor) => (
+                {Object.keys(course.get_instructors).map((instructor) => (
                   <p key={instructor} className="px-2">{instructor}</p>
-                )) : <p className="px-2"> - </p>}
+                ))}
               </div>
             </div>
             <div className="text-2xl font-bold text-center">
@@ -176,55 +147,51 @@ export default () => {
               <div className="flex justify-between items-center px-1 py-3">
                 <div className="text-gray-600 font-medium">Course rating</div>
                 <div className="font-medium">
-                  {course.avg_rating ? course.avg_rating >= 4 ? (<div className="text-green-500">{course.avg_rating}</div>)
+                  {course.avg_rating >= 4 ? (<div className="text-green-500">{course.avg_rating}</div>)
                     : course.avg_rating >= 3 ? (<div className="text-yellow-500">{course.avg_rating}</div>)
                       : (<div className="text-red-500">{course.avg_rating}</div>)
-                    : (<div> - </div>)}
+                  }
                 </div>
               </div>
 
               <div className="flex justify-between items-center  px-1 py-3">
                 <div className="text-gray-600 font-medium">Difficulty Level</div>
                 <div className="font-medium">
-                  {course.avg_difficulty ? course.avg_difficulty === 1 ? (<div className="text-green-500">Very Easy</div>)
+                  {course.avg_difficulty === 1 ? (<div className="text-green-500">Very Easy</div>)
                     : course.avg_difficulty === 2 ? (<div className="text-yellow-500">Easy</div>)
                       : course.avg_difficulty === 3 ? (<div className="text-orange-500">Medium</div>)
                         : course.avg_difficulty === 4 ? (<div className="text-red-500">Hard</div>)
-                          : (<div className="text-red-500">Very Hard</div>)
-                    : (<div> - </div>)}
+                          : (<div className="text-red-500">Very Hard</div>)}
                 </div>
               </div>
 
               <div className="flex justify-between items-center px-1 py-3">
                 <div className="text-gray-600 font-medium">Workload</div>
                 <div className="font-medium">
-                  {course.avg_workload ? course.avg_workload === 1 ? (<div className="text-green-500">Very Low</div>)
+                  {course.avg_workload === 1 ? (<div className="text-green-500">Very Low</div>)
                     : course.avg_workload === 2 ? (<div className="text-yellow-500">Low</div>)
                       : course.avg_workload === 3 ? (<div className="text-orange-500">Medium</div>)
                         : course.avg_workload === 4 ? (<div className="text-red-500">High</div>)
-                          : (<div className="text-red-500">Very High</div>)
-                    : (<div> - </div>)}
+                          : (<div className="text-red-500">Very High</div>)}
                 </div>
               </div>
 
               <div className="flex justify-between items-center px-1 py-3">
                 <div className="text-gray-600 font-medium">Average Grade</div>
                 <div className="font-medium">
-                  {course.avg_grade ? course.avg_grade >= 9 ? (<div className="text-green-500">{course.avg_grade}</div>)
+                  {course.avg_grade >= 9 ? (<div className="text-green-500">{course.avg_grade}</div>)
                     : course.avg_grade >= 7 ? (<div className="text-yellow-500">{course.avg_grade}</div>)
                       : course.avg_grade >= 5 ? (<div className="text-orange-500">{course.avg_grade}</div>)
-                        : (<div className="text-red-500">{course.avg_grade}</div>)
-                    : (<div> - </div>)}
+                        : (<div className="text-red-500">{course.avg_grade}</div>)}
                 </div>
               </div>
 
               <div className="flex justify-between items-center px-1 py-3">
                 <div className="text-gray-600 font-medium">Class Size</div>
                 <div className="font-medium text-gray-700">
-                  {course.avg_class_size ? course.avg_class_size >= 2.5 ? ('Large')
+                  {course.avg_class_size >= 2.5 ? ('Large')
                     : course.avg_class_size >= 1.5 ? ('Medium')
-                      : ('Small')
-                    : (' - ')}
+                      : ('Small')}
                 </div>
               </div>
             </div>
@@ -237,7 +204,7 @@ export default () => {
             Comments
           </div>
           <div className="max-w-screen-xl pb-10 flex flex-col gap-4">
-            {course.get_comments ? course.get_comments.map((review) => (
+            {course.get_comments.map((review) => (
               <div key={review.id} className="w-full px-12 py-6 bg-white border rounded-lg shadow dark:bg-gray-800">
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center">
@@ -258,36 +225,27 @@ export default () => {
                   ></p>
                 </div>
 
-                <div className="flex items-center justify-between mt-4">
-                  <div className="flex flex-col items-start gap-2 justify-start">
-                    <button className="flex flex-row items-center gap-1 border px-2 py-2 rounded-lg cursor-pointer shadow-sm bg-white hover:bg-gray-100 active:bg-gray-200"
-                      onClick={() => setLikeState(review.id, !likeStates[review.id])}>
-                      <img src={likeStates[review.id] ? liked : like} alt="like" className="h-5"/>
-                      {/* <p className="text-xs">UpVote</p> */}
-                      <p className="text-sm" >UpVote | {likeStates[review.id] ? review.likes + 1 : review.likes}</p>
-                    </button>
-                  </div> 
-                  <div className="flex flex-col items-start gap-2 justify-start">
-                    <button className="flex flex-row items-center gap-1 border px-2 py-2 rounded-lg cursor-pointer bg-white hover:border-red-200 hover:text-red-600 active:border-red-300 focus:bg-red-50"
-                      onClick={() => sendReport(review.id)}>
-                      {/* <img src={report} alt="report" className="h-5" /> */}
-                      <p className="text-sm">Report</p>
-                    </button>
+                <div className="flex flex-col mt-2 items-start gap-1 justify-start">
+                  <div className="flex items-center gap-2">
+                    <img src={likeStates[review.id] ? like : liked} alt="like" className="w-6 h-6 cursor-pointer" onClick={() => setLikeState(review.id, !likeStates[review.id])} />
+                    <p className="text-xs">Like</p>
+                  </div>
+                  <div className="text-xs text-center pl-0.5">
+                    <p>{review.likes}</p>
                   </div>
                 </div>
               </div>
-            ))
-            : <div className="text-center">No comments available</div>}
+            ))}
           </div>
         </div>
       </div>
 
-      {/* <button
+      <button
         className="fixed bottom-10 right-20 z-10 block py-3 px-4 text-center text-white font-medium bg-blue-600 duration-150 hover:bg-blue-500 active:bg-blue-700 rounded-3xl shadow-lg hover:shadow-none"
         onClick={() => setState(true)}
       >
         Compare
-      </button> */}
+      </button>
     </div>
   );
 };

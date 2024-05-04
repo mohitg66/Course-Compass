@@ -40,7 +40,7 @@ export default () => {
     }, [])
 
     return (
-        <div className="relative w-full text-base z-10">
+        <div className="relative w-full text-base z-20">
             {
                 state ? (
                     <div className="label-button flex items-center gap-1 px-2 border rounded-lg shadow-sm">

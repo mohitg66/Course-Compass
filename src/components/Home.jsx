@@ -7,129 +7,41 @@ import Course from "./home/Course"
 import Instructor from "./home/Instructor"
 // import svg from "../assets/workConsfused.svg"
 import svg from "/images/WorkConfused.svg"
+import Form from "./home/Form"
 
 export default () => {
 
     const [state, setState] = useState(false)
-    const [stateOfReview, setStateOfReview] = useState(true)
+
+    // if escape is pressed, close the modal
+    document.onkeydown = (e) => {
+        if (e.key === 'Escape') setState(false)
+    }
 
     return (
-        <>  
-            {state ? (
-            <div className="fixed inset-0 z-30 overflow-y-auto">
+        <>
+            <div className={`fixed inset-0 z-30 overflow-y-auto ${state ? 'block' : 'hidden'}`}>
                 <div className="fixed inset-0 w-full h-full bg-black opacity-40" onClick={() => setState(false)}></div>
-                    <div className="flex items-center min-h-screen px-4 py-8">
-                        <div className="relative w-full max-w-5xl mx-auto bg-white rounded-md shadow-lg">
-                            <div className="flex items-center justify-between p-4 border-b">
-                                <h4 className="p-1 text-xl font-medium text-gray-800">
-                                    Course Review
-                                </h4>
-                                <button className="p-2 text-gray-400 rounded-md hover:bg-gray-100"
-                                    onClick={() => setState(false)}
-                                >
-                                    <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 mx-auto" viewBox="0 0 20 20" fill="currentColor">
-                                        <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
-                                    </svg>
-                                </button>
-                            </div>
-                            <form className="p-4 my-2 text-[15.5px] leading-relaxed text-gray-500">
-                                <div className="grid grid-cols-2 grid-rows-3 gap-3">
-                                    <div>
-                                        <label for="course-name" className="block p-1 text-gray-900">
-                                            Course Name
-                                        </label>
-                                        <Course />
-                                    </div>
-
-                                    <div>
-                                        <label for="instructor" className="block p-1 text-gray-900">
-                                            Instructor Name
-                                        </label>
-                                        <Instructor />
-                                    </div>
-
-                                    <div>
-                                        <label for="overall-course-rating" className="block p-1 text-gray-900">
-                                            Overall Course Rating
-                                        </label>
-                                        <input required type="number" min="0.1" max="5" step="0.1" className="w-full p-2 text-gray-600 border rounded-md focus:outline-none focus:border-blue-500" placeholder="1-5" />
-                                    </div>
-
-                                    <div>
-                                        <label for="difficulty" className="block p-1 text-gray-900">
-                                            Difficulty
-                                        </label>
-                                        <input required type="number" min="1" max="4" className="w-full p-2 text-gray-600 border rounded-md focus:outline-none focus:border-blue-500" placeholder="1(Low) - 4(Extreme)" />
-                                    </div>
-
-                                    <div>
-                                        <label for="workload" className="block p-1 text-gray-900">
-                                            Workload
-                                        </label>
-                                        <input required type="number" min="1" max="4" className="w-full p-2 text-gray-600 border rounded-md focus:outline-none focus:border-blue-500" placeholder="1(Low) - 4(Extreme)" />
-                                    </div>
-
-                                    <div>
-                                        <label for="average-grade" className="block p-1 text-gray-900">
-                                            Average Grade
-                                        </label>
-                                        <input required type="number" min="1" max="10" className="w-full p-2 text-gray-600 border rounded-md focus:outline-none focus:border-blue-500" placeholder="1-10" />
-                                    </div>                                   
-
-                                </div>
-
-                                <label for="review" className="block p-1 mt-3 text-gray-900">
-                                    Review
-                                </label>
-                                <textarea 
-                                    required
-                                    className="w-full p-2 text-gray-600 border rounded-md overflow-auto focus:outline-none focus:border-blue-500" 
-                                    rows="6" 
-                                    placeholder="Write your review here..."
-                                />
-
-                                {stateOfReview ? (
-                                    
-                                <div className="w-1/5 flex items-center gap-3 mt-2">
-                                    <button type="submit" className="block w-1/2 py-2 px-4 text-center text-white font-medium bg-blue-600 duration-150 hover:bg-blue-500 active:bg-blue-700 rounded-lg shadow-lg hover:shadow-none"
-                                        onClick={() => (setStateOfReview(false), setTimeout(() => (setState(false), setStateOfReview(true)), 5000))}
-                                    >
-                                        Submit
-                                    </button>
-                                    <button className="flex w-1/2 items-center justify-center gap-x-2 py-2 px-4 text-gray-700 hover:text-gray-500 font-medium duration-150 active:bg-gray-100 border rounded-lg shadow-md md:inline-flex"
-                                        onClick={() => setState(false)}
-                                    >
-                                        Cancel
-                                    </button>
-                                </div>) : (
-
-                                <div className="mt-2 px-4 rounded-md border border-green-200 bg-green-50 w-full md:mr-auto md:px-4">
-                                    <div className="flex justify-between py-3">
-                                        <div className="flex">
-                                            <div>
-                                                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 rounded-full text-green-500" viewBox="0 0 20 20" fill="currentColor">
-                                                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                                                </svg>
-                                            </div>
-                                            <div className="self-center ml-3">
-                                                <span className="text-green-600 font-semibold">
-                                                    Success
-                                                </span>
-                                                <p className="text-green-600 mt-1">
-                                                    Your Review has been posted successfully!
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                )}
-                            </form>
-                            
+                <div className="flex items-center min-h-screen px-4 py-8">
+                    <div className="relative w-full max-w-5xl mx-auto bg-white rounded-md shadow-lg">
+                        <div className="flex items-center justify-between p-4 border-b">
+                            <h4 className="p-1 text-xl font-medium text-gray-800">
+                                Course Review
+                            </h4>
+                            <button className="p-2 text-gray-400 rounded-md hover:bg-gray-100"
+                                onClick={() => setState(false)}
+                            >
+                                <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 mx-auto" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
+                                </svg>
+                            </button>
                         </div>
+
+                        <Form />
+
                     </div>
                 </div>
-            ) : ''}
-
+            </div>
 
 
             <div id='home' className="bg-gray-50 h-screen">
@@ -149,7 +61,7 @@ export default () => {
                                 With Course Compass, you can easily search and compare courses based on factors such as difficulty, workload, average grade, class size and overall quality.
                             </p>
                             <div className="items-center gap-x-3 space-y-3 sm:flex sm:space-y-0 cursor-pointer">
-                                <a 
+                                <a
                                     // href="#postreview" 
                                     className="block py-2 px-4 text-center text-white font-medium bg-blue-600 duration-150 hover:bg-blue-500 active:bg-blue-700 rounded-lg shadow-lg hover:shadow-none"
                                     onClick={() => setState(true)}
@@ -173,3 +85,43 @@ export default () => {
         </>
     )
 }
+
+// // Import the react JS packages
+// import { useEffect, useState } from "react";
+// import axios from "axios";
+// import Navbar2 from "./Navbar2";
+
+// // Define the Login function.
+// export default () => {
+//     const [message, setMessage] = useState('');
+//     useEffect(() => {
+//         if (localStorage.getItem('access_token') === null) {
+//             window.location.href = '/login'
+//         }
+//         else {
+//             (async () => {
+//                 try {
+//                     const { data } = await axios.get(
+//                         'http://localhost:8000/home/', {
+//                         headers: {
+//                             'Content-Type': 'application/json',
+//                             Authorization: `Bearer ${localStorage.getItem('access_token')}`
+//                         }
+//                     }
+//                     );
+//                     setMessage(data.message);
+//                 } catch (e) {
+//                     console.log('not auth');
+//                 }
+//             })()
+//         };
+//     }, []);
+//     return (
+//         <div>
+//             <Navbar2 />
+//             <div className="form-signin mt-5 text-center">
+//                 <h3>{message}</h3>
+//             </div>
+//         </div>
+//     );
+// }
