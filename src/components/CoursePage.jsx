@@ -14,7 +14,7 @@ export default () => {
 
   const [course, setCourse] = useState(null);
   useEffect(() => {
-    axios.get(`http://127.0.0.1:8000/api/courses/${id}/`, {
+    axios.get(window.API + `/api/courses/${id}/`, {
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${localStorage.getItem('access_token')}`
@@ -49,7 +49,7 @@ export default () => {
     }));
 
     // Update like count for review id
-    axios.post(`http://127.0.0.1:8000/api/reviews/${reviewId}/like/`, {
+    axios.post(window.API + `/api/reviews/${reviewId}/like/`, {
       user_id: localStorage.getItem('user_id'),
       like: value
     }, {
@@ -66,7 +66,7 @@ export default () => {
 
   const sendReport = (reviewId) => {
     confirm('Are you sure you want to report this comment? This action cannot be undone.') &&
-    axios.post(`http://127.0.0.1:8000/api/reviews/${reviewId}/report/`, {
+    axios.post(window.API + `/api/reviews/${reviewId}/report/`, {
       user_id: localStorage.getItem('user_id')
     }, {
       headers: {

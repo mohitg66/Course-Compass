@@ -11,6 +11,9 @@ import Compare from './components/Compare'
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
 import SignOut from './components/SignOut'
 
+// global variable for backend API
+window.API = 'https://course-compass-backend.onrender.com'
+
 function App() {
   return (
     <Router>

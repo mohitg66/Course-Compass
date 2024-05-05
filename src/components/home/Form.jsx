@@ -22,7 +22,7 @@ function ReviewForm() {
 
     useEffect(() => {
         // Fetch courses
-        axios.get('http://127.0.0.1:8000/api/courses/', {
+        axios.get(window.API + '/api/courses/', {
             headers: {
                 'Content-Type': 'application/json',
                 Authorization: `Bearer ${localStorage.getItem('access_token')}`
@@ -39,7 +39,7 @@ function ReviewForm() {
             });
 
         // Fetch instructors
-        axios.get('http://127.0.0.1:8000/api/instructors/', {
+        axios.get(window.API + '/api/instructors/', {
             headers: {
                 'Content-Type': 'application/json',
                 Authorization: `Bearer ${localStorage.getItem('access_token')}`
@@ -112,7 +112,7 @@ function ReviewForm() {
         formData.grade = parseInt(formData.grade.value);
         console.log('Submitting review...', formData);
 
-        axios.post('http://127.0.0.1:8000/api/reviews/', formData, {
+        axios.post(window.API + '/api/reviews/', formData, {
             headers: {
                 'Content-Type': 'application/json',
                 Authorization: `Bearer ${localStorage.getItem('access_token')}`

@@ -19,7 +19,7 @@ export default () => {
         try {
             // Create the POST request
             const response = await
-                axios.post('http://localhost:8000/login/',
+                axios.post(window.API + '/login/',
                     user,
                     { headers: { 'Content-Type': 'application/json' } }
                 );

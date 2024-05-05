@@ -86,7 +86,7 @@ export default () => {
     const [course, setCourse] = useState(null);
     useEffect(() => {
         // Fetch courses
-        axios.get('http://127.0.0.1:8000/api/courses/', {
+        axios.get(window.API + '/api/courses/', {
             headers: {
                 'Content-Type': 'application/json',
                 Authorization: `Bearer ${localStorage.getItem('access_token')}`

@@ -20,7 +20,7 @@ export default () => {
         try {
             // Create the POST request
             const response = await
-                axios.post('http://localhost:8000/register/',
+                axios.post(window.API + '/register/',
                     user,
                     { headers: { 'Content-Type': 'application/json' } }
                 );
