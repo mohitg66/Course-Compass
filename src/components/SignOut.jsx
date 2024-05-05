@@ -18,7 +18,7 @@ export default () => {
         console.log('logging out');
         localStorage.clear();
         axios.defaults.headers.common['Authorization'] = null;
-        window.location.href = '/home';
+        window.location.href = '/';
     } catch (e) {
         console.log('logout not working');
     }
