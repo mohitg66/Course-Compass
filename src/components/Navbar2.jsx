@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react"
+import { useNavigate } from "react-router-dom"
 import profileIcon from "/images/profileIcon.png"
 import { Link } from "react-router-dom"
 import logo from "/images/logo.svg"
@@ -64,6 +65,7 @@ const ProfileDropDown = (props) => {
 }
 
 export default () => {
+    const navigate = useNavigate();
 
     const [isAuth, setIsAuth] = useState(false);
     useEffect(() => {
@@ -143,7 +145,7 @@ export default () => {
                             <form
                                 onSubmit={(e) => {
                                     e.preventDefault()
-                                    window.location.href = `/courses/${course.value}`
+                                    navigate(`/courses/${course.value}`)
                                 }}
                             >
                                 {/* <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 flex-none text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
