@@ -122,9 +122,9 @@ export default () => {
                             {
                                 navigation.map((item, idx) => (
                                     <li key={idx} className="bg-white text-gray-600 hover:text-gray-900">
-                                        <a href={item.path}>
+                                        <Link to={item.path}>
                                             {item.title}
-                                        </a>
+                                        </Link>
                                     </li>
                                 ))
                             }

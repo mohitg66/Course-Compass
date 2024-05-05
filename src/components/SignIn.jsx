@@ -34,7 +34,7 @@ export default () => {
             axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('access_token')}`;
 
             // Redirect to the home page.
-            window.location.href = '/home';
+            window.location.href = '/';
             console.log("Logged in successfully")
             console.log("data", response.data)
             console.log("localStorage", localStorage)

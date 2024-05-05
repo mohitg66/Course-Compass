@@ -22,7 +22,7 @@ export default () => {
     })
     .then(response => setCourse(response.data))
     .catch(error => console.error(error));
-  }, []);
+  }, [id]);
   
   console.log(course);
   
