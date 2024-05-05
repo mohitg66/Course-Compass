@@ -4,7 +4,7 @@
 <img src="public\images\homepage.png" />
 
 ## Tech Stack
-[![My Skills](https://skillicons.dev/icons?i=html,css,js,tailwind,react,vite,vercel)](https://skillicons.dev)
+[![My Skills](https://skillicons.dev/icons?i=html,css,js,tailwind,react,vite,vercel,django)](https://skillicons.dev)
 
 ## Features
 
