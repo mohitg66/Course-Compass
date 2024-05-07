@@ -48,7 +48,7 @@ function ReviewForm() {
             .then((response) => {
                 // take only those instructors who have taught the selected course
                 formData.course ? setInstructors(response.data.filter((instructor) => instructor.courses.includes(formData.course.value)).map((instructor) => ({
-                    value: instructor.name,
+                    value: instructor.id,
                     label: instructor.name,
                 }))) : setInstructors([]);
                 formData.instructor = null;
