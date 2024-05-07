@@ -176,9 +176,9 @@ export default () => {
               <div className="flex justify-between items-center px-1 py-3">
                 <div className="text-gray-600 font-medium">Course rating</div>
                 <div className="font-medium">
-                  {course.avg_rating ? course.avg_rating >= 4 ? (<div className="text-green-500">{course.avg_rating}</div>)
-                    : course.avg_rating >= 3 ? (<div className="text-yellow-500">{course.avg_rating}</div>)
-                      : (<div className="text-red-500">{course.avg_rating}</div>)
+                  {course.avg_rating ? course.avg_rating >= 4 ? (<div className="text-green-500">{course.avg_rating.toFixed(2)}</div>)
+                    : course.avg_rating >= 3 ? (<div className="text-yellow-500">{course.avg_rating.toFixed(2)}</div>)
+                      : (<div className="text-red-500">{course.avg_rating.toFixed(2)}</div>)
                     : (<div> - </div>)}
                 </div>
               </div>
@@ -210,10 +210,10 @@ export default () => {
               <div className="flex justify-between items-center px-1 py-3">
                 <div className="text-gray-600 font-medium">Average Grade</div>
                 <div className="font-medium">
-                  {course.avg_grade ? course.avg_grade >= 9 ? (<div className="text-green-500">{course.avg_grade}</div>)
-                    : course.avg_grade >= 7 ? (<div className="text-yellow-500">{course.avg_grade}</div>)
-                      : course.avg_grade >= 5 ? (<div className="text-orange-500">{course.avg_grade}</div>)
-                        : (<div className="text-red-500">{course.avg_grade}</div>)
+                  {course.avg_grade ? course.avg_grade >= 9 ? (<div className="text-green-500">{course.avg_grade.toFixed(2)}</div>)
+                    : course.avg_grade >= 7 ? (<div className="text-yellow-500">{course.avg_grade.toFixed(2)}</div>)
+                      : course.avg_grade >= 5 ? (<div className="text-orange-500">{course.avg_grade.toFixed(2)}</div>)
+                        : (<div className="text-red-500">{course.avg_grade.toFixed(2)}</div>)
                     : (<div> - </div>)}
                 </div>
               </div>
