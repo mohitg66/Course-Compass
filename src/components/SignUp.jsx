@@ -42,7 +42,7 @@ export default () => {
         }
 
         catch (e) {
-            alert("Please enter valid credentials")
+            alert("Username or Email ID already exists")
             console.log("Login failed")
         }
     }
@@ -81,9 +81,9 @@ export default () => {
                             // pattern="[a-z0-9._%+-]+@iiitd.ac.in"
                             // must end with iiitd.ac.in
                             pattern='^\w+@(iiitd\.ac\.in)$'
-                            title='Please enter your valid student email address'
+                            title='Enter your valid student email address'
                             className="w-full px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-blue-600 shadow-sm rounded-lg"
-                            placeholder='Email (will not be visible to others)'
+                            placeholder='Official Email'
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                         />
@@ -99,9 +99,9 @@ export default () => {
                             onChange={(e) => setPassword(e.target.value)}
                         />
                     </div>
-                    <div className="flex items-center justify-between text-sm">
+                    {/* <div className="flex items-center justify-between text-sm">
                         <a href="#" className="text-center text-blue-600 hover:text-blue-500">Forgot password?</a>
-                    </div>
+                    </div> */}
 
                     <button
                         type="submit"
