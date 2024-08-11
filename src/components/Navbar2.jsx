@@ -100,7 +100,7 @@ export default () => {
 
     return (
         <nav className="sticky top-0 border-b bg-white z-20 shadow-md">
-            <div className="bg-white flex items-center space-x-8 py-2.5 px-4 max-w-screen-xl mx-auto md:px-8">
+            <div className="bg-white flex items-center justify-between space-x-8 py-2.5 px-4 max-w-screen-xl mx-auto md:px-8">
                 <div className="flex-none lg:flex-initial">
                     <Link to="/home">
                         <img
@@ -177,11 +177,11 @@ export default () => {
                             </button>
                         </div>
 
-                        : <div className="flex items-center justify-end space-x-6 lg:space-x-8">
-                            <Link className="my-auto py-1 px-3 lg:px-5 rounded-lg font-medium border border-blue-600 text-blue-600 text-center bg-white hover:bg-gray-100 active:bg-white duration-150 block md:py-2 md:inline"
+                        : <div className="flex flex-1 items-center justify-end space-x-6 lg:space-x-8">
+                            <Link className="my-auto py-1 px-3 lg:py-2 lg:px-5 rounded-lg font-medium border border-blue-600 text-blue-600 text-center bg-white hover:bg-gray-100 active:bg-white duration-150 block"
                                 to="/login">Log In</Link>
 
-                            <Link className="my-auto py-1 px-3 lg:px-5 rounded-lg font-medium text-white text-center bg-blue-600 hover:bg-blue-500 active:bg-blue-700 duration-150 block md:py-2 md:inline"
+                            <Link className="my-auto py-1 px-3 lg:py-2 lg:px-5 rounded-lg font-medium text-white text-center bg-blue-600 border border-blue-600 hover:bg-blue-500 active:bg-blue-700 duration-150 block"
                                 to="/signup">Sign Up</Link>
                         </div>
                     }

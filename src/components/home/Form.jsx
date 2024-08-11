@@ -120,7 +120,7 @@ function ReviewForm() {
     };
 
     return (
-        <form onSubmit={handleSubmit} className="max-w-3xl mx-auto mt-8 mb-10">
+        <form onSubmit={handleSubmit} className="max-w-3xl mx-4 text-sm lg:text-base lg:mx-auto mt-8 mb-10">
             <div className="grid grid-cols-2 gap-4">
                 <div className='col-span-2'>
                     <label htmlFor="course" className="flex gap-1"><p>Course</p> <p className='text-red-600'>*</p></label>
@@ -250,15 +250,15 @@ function ReviewForm() {
                     <textarea name="comment" id="comment" value={formData.comment} placeholder='Write a descriptive review here...'
                     onChange={handleCommentChange} className="w-full h-32 border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500" />
                 </div>
-                <div className='flex -mt-1 pb-4'>
+                <div className='flex col-span-2 -mt-1 pb-4'>
                     <input type="checkbox" name="anonymous" id="anonymous" checked={formData.anonymous}
                         onChange={(e) => setFormData((prevData) => ({ ...prevData, anonymous: e.target.checked }))} />
                     <label htmlFor="anonymous" className="ml-2">Post as Anonymous</label>
                 </div>
             </div>
             {stateOfReview ? (
-                <div className="w-1/3 flex items-center gap-3 mt-2">
-                    <button type="submit" className="block w-1/2 py-2 px-4 text-center text-white font-medium bg-blue-600 duration-150 hover:bg-blue-500 active:bg-blue-700 rounded-lg shadow-lg hover:shadow-none"
+                <div className="flex items-center gap-3 mt-2">
+                    <button type="submit" className="block py-2 px-5 text-center text-white font-medium bg-blue-600 duration-150 hover:bg-blue-500 active:bg-blue-700 rounded-lg shadow-lg hover:shadow-none"
                         onClick= {handleSubmit}
                     >
                         Submit

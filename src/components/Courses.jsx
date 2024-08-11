@@ -19,7 +19,7 @@ export default () => {
                 {loading ? (
                   <div className="animate-spin rounded-full h-32 w-32 border-t-4 border-b-4 border-primary-600"></div>
                 ) : (
-                  <div className="text-2xl text-gray-600">Course not found</div>
+                  <div className="text-2xl text-gray-600">Courses not found</div>
                 )}
               </div>
           </div>

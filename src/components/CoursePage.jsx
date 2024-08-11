@@ -94,9 +94,9 @@ export default () => {
           {loading ? (
             <div className="animate-spin rounded-full h-32 w-32 border-t-4 border-b-4 border-primary-600"></div>
           ) : localStorage.getItem('access_token') === null ? (
-            <div className="text-2xl text-gray-600">You need to login to view this page</div>
+            <div className="text-2xl text-gray-600 text-center">You need to login to view this page</div>
           ) : (
-            <div className="text-2xl text-gray-600">Course not found</div>
+            <div className="text-2xl text-gray-600 text-center">Course not found</div>
           )}
         </div>
       </div>
