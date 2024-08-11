@@ -48,7 +48,7 @@ export default () => {
 
                 <Navbar2 />
 
-                <section id='hero' className="py-28">
+                <section id='hero' className="h-83vh my-auto mt-16 lg:py-28">
                     <div className="max-w-screen-xl mx-auto text-gray-600 gap-x-12 items-center justify-between overflow-hidden md:flex md:px-8">
                         <div className="flex-none space-y-5 px-4 sm:max-w-lg md:px-0 lg:max-w-xl">
                             {/* <h1 className="text-sm text-blue-600 font-medium">
@@ -63,17 +63,17 @@ export default () => {
                             <div className="items-center gap-x-3 space-y-3 sm:flex sm:space-y-0 cursor-pointer">
                                 <a
                                     // href="#postreview" 
-                                    className="block py-2 px-4 text-center text-white font-medium bg-blue-600 duration-150 hover:bg-blue-500 active:bg-blue-700 rounded-lg shadow-lg hover:shadow-none"
+                                    className="block py-2 px-4 text-center text-white font-medium bg-blue-600 duration-150 hover:bg-blue-500 active:bg-blue-700 rounded-lg lg:shadow-lg hover:shadow-none"
                                     onClick={() => setState(true)}
                                 >
                                     Post a Review
                                 </a>
-                                <Link to="/courses" className="flex items-center justify-center gap-x-2 py-2 px-4 text-gray-700 hover:text-gray-500 font-medium duration-150 active:bg-gray-100 border rounded-lg shadow-md md:inline-flex">
+                                <Link to="/courses" className="flex items-center justify-center gap-x-2 py-2 px-4 text-gray-700 hover:text-gray-500 font-medium duration-150 active:bg-gray-100 border rounded-lg lg:shadow-md md:inline-flex">
                                     View Reviews
                                 </Link>
                             </div>
                         </div>
-                        <div className="flex-none mt-14 md:mt-0 md:max-w-lg">
+                        <div className="hidden lg:block flex-none mt-14 md:mt-0 md:max-w-lg">
                             <img
                                 src={svg}
                                 alt="img"

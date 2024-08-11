@@ -1,4 +1,5 @@
 import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Navbar2 from "./Navbar2";
@@ -8,11 +9,14 @@ import Course from "./home/Course"
 import like from "/images/upvote.svg"
 import liked from "/images/upvoted.svg"
 import report from "/images/report.svg"
+import mail_color from "/images/mail_color.svg"
+import mail_grey from "/images/mail_grey.svg"
 
 export default () => {
   const { id } = useParams();
-
+  const [loading, setLoading] = useState(true);
   const [course, setCourse] = useState(null);
+
   useEffect(() => {
     axios.get(window.API + `/api/courses/${id}/`, {
       headers: {
@@ -20,11 +24,12 @@ export default () => {
         'Authorization': `Bearer ${localStorage.getItem('access_token')}`
       }
     })
-    .then(response => setCourse(response.data))
-    .catch(error => console.error(error));
+    .then(response => {
+      setCourse(response.data);
+    })
+    .catch(error => console.error(error))
+    .finally(() => setLoading(false));
   }, [id]);
-  
-  console.log(course);
   
   const [state, setState] = useState(false);
   
@@ -80,8 +85,22 @@ export default () => {
       .catch(error => console.error(error));
   };
 
+
   if (!course) {
-    return <div>Course not found</div>;
+    return (
+      <div>
+        <Navbar2 />
+        <div className="flex items-center justify-center h-[83vh]">
+          {loading ? (
+            <div className="animate-spin rounded-full h-32 w-32 border-t-4 border-b-4 border-primary-600"></div>
+          ) : localStorage.getItem('access_token') === null ? (
+            <div className="text-2xl text-gray-600">You need to login to view this page</div>
+          ) : (
+            <div className="text-2xl text-gray-600">Course not found</div>
+          )}
+        </div>
+      </div>
+    );
   }
 
   return (
@@ -150,29 +169,25 @@ export default () => {
 
       <Navbar2 />
 
-      <div className="max-w-screen-xl py-4 mx-auto box-content flex flex-row gap-6">
+      <div className="max-w-screen-xl lg:py-4 mx-auto box-content flex flex-col lg:flex-row gap-6">
         {/* this div should not scroll */}
-        <div className="w-1/3 h-[83vh] border rounded-2xl shadow-lg sticky top-24">
-          <div className="w-full h-1/2 p-6 flex flex-col gap-2 justify-center bg-primary-600 text-primary-50 rounded-2xl">
-            <div className="text-2xl font text-center">{course.codes}</div>
-            <div className="text-4xl py-12 font-bold text-center">
+        <div className="lg:w-1/3 lg:h-[83vh] border lg:rounded-2xl lg:shadow-lg lg:sticky top-24">
+          <div className="w-full lg:h-1/2 p-6 flex flex-col gap-1 justify-center bg-primary-600 text-primary-50 lg:rounded-2xl">
+            <div className="text-xl lg:text-2xl font text-center">{course.codes}</div>
+            <div className="text-2xl lg:text-4xl py-3 lg:py-12 font-bold text-center">
               <u>{course.name}</u>
             </div>
 
-            <div className="flex flex-row justify-center divide-x">
-              <div className="flex flex-row divide-x-2 ml-2 divide-primary-300">
-                {course.get_instructors ? Object.keys(course.get_instructors).map((instructor) => (
-                  <p key={instructor} className="px-2">{instructor}</p>
-                )) : <p className="px-2"> - </p>}
-              </div>
+            <div className="text-lg lg:text-xl flex flex-row justify-center divide-x">
+              {course.instructor}
             </div>
-            <div className="text-2xl font-bold text-center">
+            <div className="text-lg lg:text-2xl font-bold text-center">
               {course.institute}
             </div>
           </div>
 
-          <div className="w-full h-1/2 flex-grow">
-            <div className="grid grid-rows-5 align-middle h-full py-4 px-14 divide-y mx-auto">
+          <div className="w-full lg:h-1/2 flex-grow">
+            <div className="grid grid-rows-5 align-middle h-full lg:py-4 px-4 lg:px-14 divide-y mx-auto">
               <div className="flex justify-between items-center px-1 py-3">
                 <div className="text-gray-600 font-medium">Course rating</div>
                 <div className="font-medium">
@@ -232,23 +247,41 @@ export default () => {
         </div>
 
 
-        <div className="w-2/3">
+        <div className="px-4 lg:p-0 lg:w-2/3">
           <div className="my-2 text-lg">
             Comments
           </div>
           <div className="max-w-screen-xl pb-10 flex flex-col gap-4">
             {course.get_comments ? course.get_comments.map((review) => (
-              <div key={review.id} className="w-full px-12 py-6 bg-white border rounded-lg shadow dark:bg-gray-800">
-                <div className="flex items-center justify-between mb-4">
-                  <div className="flex items-center">
-                    <a role="link" tabIndex={0} className="cursor-pointer">
-                      <img className="hidden object-cover w-8 h-8 mr-4 rounded-full sm:block" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="avatar" />
-                    </a>
-                    <a className="font-bold text-gray-700 cursor-pointer dark:text-gray-200" tabIndex={0} role="link">
-                      {review.user}
-                    </a>
+              <div key={review.id} className="w-full px-6 lg:px-12 py-4 lg:py-6 bg-white border rounded-lg shadow dark:bg-gray-800">
+                <div className="flex items-center justify-between lg:mb-4">
+                  <div className="relative group">
+                    <div className="flex items-center">
+                      <a role="link" tabIndex={0} className="cursor-pointer">
+                        <img className="object-cover w-8 h-8 mr-4 rounded-full sm:block" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="avatar" />
+                      </a>
+                      <a className="font-semibold text-gray-700 cursor-pointer dark:text-gray-200" tabIndex={0} role="link">
+                        {review.user_username}
+                      </a>
+                    </div>
+                    <span className="w-40 absolute bottom-10 left-0 bg-gray-700 text-white text-xs rounded py-1 px-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      {review.user_username} achieved {review.grade} in this course
+                    </span>
                   </div>
-                  <img src="https://cdn-icons-png.flaticon.com/512/3536/3536505.png" alt="linkedIn" className="h-8" />
+                  <div className="relative group">
+                    <a href={`mailto:${review.user_email}`} className="flex items-center">
+                      {review.user_email ? (
+                        <img src={mail_color} alt="mail" className="h-6" />
+                      ) : (
+                        <img src={mail_grey} alt="mail" className="h-6" />
+                      )}
+                    </a>
+                    {review.user_email && (
+                      <span className="absolute bottom-8 right-0 bg-gray-700 text-white text-xs rounded py-1 px-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        {review.user_email}
+                      </span>
+                    )}
+                  </div>
                 </div>
 
                 <div className="mt-2">
@@ -260,15 +293,16 @@ export default () => {
 
                 <div className="flex items-center justify-between mt-4">
                   <div className="flex flex-col items-start gap-2 justify-start">
-                    <button className="flex flex-row items-center gap-1 border px-2 py-2 rounded-lg cursor-pointer shadow-sm bg-white hover:bg-gray-100 active:bg-gray-200"
+                    <button className="flex flex-row items-center gap-1 border px-2 py-1 lg:py-2 rounded-lg cursor-pointer shadow-sm bg-white hover:bg-gray-100 active:bg-gray-200"
                       onClick={() => setLikeState(review.id, !likeStates[review.id])}>
-                      <img src={likeStates[review.id] ? liked : like} alt="like" className="h-5"/>
+                      <img src={likeStates[review.id] ? liked : like} alt="like" className="h-4 lg:h-5"/>
+                      <p className="lg:hidden pl-1">{likeStates[review.id] ? review.likes + 1 : review.likes}</p>
                       {/* <p className="text-xs">UpVote</p> */}
-                      <p className="text-sm" >UpVote | {likeStates[review.id] ? review.likes + 1 : review.likes}</p>
+                      <p className="hidden lg:block text-sm" >UpVote | {likeStates[review.id] ? review.likes + 1 : review.likes}</p>
                     </button>
                   </div> 
                   <div className="flex flex-col items-start gap-2 justify-start">
-                    <button className="flex flex-row items-center gap-1 border px-2 py-2 rounded-lg cursor-pointer bg-white hover:border-red-200 hover:text-red-600 active:border-red-300 focus:bg-red-50"
+                    <button className="flex flex-row items-center gap-1 border px-2 py-2 lg:py-2 rounded-lg cursor-pointer bg-white hover:border-red-200 hover:text-red-600 active:border-red-300 focus:bg-red-50"
                       onClick={() => sendReport(review.id)}>
                       {/* <img src={report} alt="report" className="h-5" /> */}
                       <p className="text-sm">Report</p>

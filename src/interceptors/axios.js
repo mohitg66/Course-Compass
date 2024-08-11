@@ -1,5 +1,7 @@
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 let refresh = false;
+
 axios.interceptors.response.use(resp => resp, async error => {
     if (error.response.status === 401 && !refresh) {
         refresh = true;
@@ -25,8 +27,11 @@ axios.interceptors.response.use(resp => resp, async error => {
                 return axios(error.config);
             }
         } catch (refreshError) {
-            // Handle refresh token error
-            console.error(refreshError);
+            // Redirect to login page, using react
+            console.log("refresh error, redirecting to login page");
+            console.log(refreshError)
+            const navigate = useNavigate();
+            navigate('/login');            
         }
     }
     refresh = false;

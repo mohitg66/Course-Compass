@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Select from 'react-select';
+import { useApi } from '../../ApiContext.jsx';
 
 function ReviewForm() {
     const [formData, setFormData] = useState({
         user: null,
         course: null,
-        instructor: null,
         course_rating: null,
         instructor_rating: null,
         difficulty: null,
@@ -14,49 +14,26 @@ function ReviewForm() {
         class_size: null,
         grade: null,
         comment: '',
+        anonymous: false,
     });
+
+    // const { loading, error } = useApi();
+    const { courses: data , loading, error } = useApi();
+    console.log(data, loading, error);
+
     const [courses, setCourses] = useState([]);
-    const [instructors, setInstructors] = useState([]);
 
     const [stateOfReview, setStateOfReview] = useState(true)
 
+    // Fetch courses from data context and set them in the state
     useEffect(() => {
-        // Fetch courses
-        axios.get(window.API + '/api/courses/', {
-            headers: {
-                'Content-Type': 'application/json',
-                Authorization: `Bearer ${localStorage.getItem('access_token')}`
-            }
-        })
-            .then((response) => {
-                setCourses(response.data.map((course) => ({
-                    value: course.id,
-                    label: course.name,
-                })));
-            })
-            .catch((error) => {
-                console.error('Error fetching courses:', error);
-            });
-
-        // Fetch instructors
-        axios.get(window.API + '/api/instructors/', {
-            headers: {
-                'Content-Type': 'application/json',
-                Authorization: `Bearer ${localStorage.getItem('access_token')}`
-            }
-        })
-            .then((response) => {
-                // take only those instructors who have taught the selected course
-                formData.course ? setInstructors(response.data.filter((instructor) => instructor.courses.includes(formData.course.value)).map((instructor) => ({
-                    value: instructor.id,
-                    label: instructor.name,
-                }))) : setInstructors([]);
-                formData.instructor = null;
-            })
-            .catch((error) => {
-                console.error('Error fetching instructors:', error);
-            });
-    }, [formData.course]);
+        if (data) {
+            setCourses(data.map((course) => ({
+                value: course.id,
+                label: course.acronym + ' - ' + course.name + ' (' + course.instructor + ')',
+            })));
+        }
+    }, [data]);
 
     const handleInputChange = (name, selectedOption) => {
         setFormData((prevData) => ({
@@ -76,17 +53,14 @@ function ReviewForm() {
         if (
             formData.course === null ||
             formData.course_rating === null ||
-            formData.difficulty === null ||
-            formData.workload === null ||
-            formData.class_size === null ||
+            formData.instructor_rating === null ||
+            // formData.difficulty === null ||
+            // formData.workload === null ||
+            // formData.class_size === null ||
             formData.grade === null
-        ) {
-            return false;
-        }
+        ) return false;
         return true;
     };
-
-    // const 
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -103,13 +77,13 @@ function ReviewForm() {
 
         formData.user = parseInt(localStorage.getItem('user_id'));
         formData.course = formData.course.value;
-        formData.instructor = formData.instructor ? formData.instructor.value : null;
         formData.course_rating = parseInt(formData.course_rating.value);
         formData.instructor_rating = formData.instructor_rating ? parseInt(formData.instructor_rating.value) : null;
-        formData.difficulty = parseInt(formData.difficulty.value);
-        formData.workload = parseInt(formData.workload.value);
-        formData.class_size = parseInt(formData.class_size.value);
+        formData.difficulty = formData.difficulty ? parseInt(formData.difficulty.value) : null;
+        formData.workload = formData.workload ? parseInt(formData.workload.value) : null;
+        formData.class_size = formData.class_size ? parseInt(formData.class_size.value) : null;
         formData.grade = parseInt(formData.grade.value);
+        formData.anonymous = formData.anonymous ? true : false;
         console.log('Submitting review...', formData);
 
         axios.post(window.API + '/api/reviews/', formData, {
@@ -124,7 +98,6 @@ function ReviewForm() {
                 setFormData({
                     user: null,
                     course: null,
-                    instructor: null,
                     course_rating: null,
                     instructor_rating: null,
                     difficulty: null,
@@ -132,6 +105,7 @@ function ReviewForm() {
                     class_size: null,
                     grade: null,
                     comment: '',
+                    anonymous: false,
                 });
                 setStateOfReview(false);
                 // setStateOfReview true after 5 seconds
@@ -146,10 +120,10 @@ function ReviewForm() {
     };
 
     return (
-        <form onSubmit={handleSubmit} className="max-w-3xl mx-auto my-8">
+        <form onSubmit={handleSubmit} className="max-w-3xl mx-auto mt-8 mb-10">
             <div className="grid grid-cols-2 gap-4">
-                <div>
-                    <label htmlFor="course" className="block">Course</label>
+                <div className='col-span-2'>
+                    <label htmlFor="course" className="flex gap-1"><p>Course</p> <p className='text-red-600'>*</p></label>
                     <Select
                         id="course"
                         name="course"
@@ -161,19 +135,7 @@ function ReviewForm() {
                     />
                 </div>
                 <div>
-                    <label htmlFor="instructor" className="block">Instructor</label>
-                    <Select
-                        id="instructor"
-                        name="instructor"
-                        options={instructors}
-                        value={formData.instructor}
-                        onChange={(selectedOption) => handleInputChange('instructor', selectedOption)}
-                        isSearchable
-                        placeholder="Select an instructor..."
-                    />
-                </div>
-                <div>
-                    <label htmlFor="course_rating" className="block">Course Rating</label>
+                    <label htmlFor="course_rating" className="flex gap-1"><p>Course Rating</p> <p className='text-red-600'>*</p></label>
                     <Select
                         id="course_rating"
                         name="course_rating"
@@ -191,7 +153,7 @@ function ReviewForm() {
                     />
                 </div>
                 <div>
-                    <label htmlFor="instructor_rating" className="block">Instructor Rating</label>
+                    <label htmlFor="instructor_rating" className="flex gap-1"><p>Instructor Rating</p> <p className='text-red-600'>*</p></label>
                     <Select
                         id="instructor_rating"
                         name="instructor_rating"
@@ -261,7 +223,7 @@ function ReviewForm() {
                     />
                 </div>
                 <div>
-                    <label htmlFor="grade" className="block">Grade</label>
+                    <label htmlFor="grade" className="flex gap-1"><p>Grade</p> <p className='text-red-600'>*</p></label>
                     <Select
                         id="grade"
                         name="grade"
@@ -285,7 +247,13 @@ function ReviewForm() {
                 </div>
                 <div className="col-span-2">
                     <label htmlFor="comment" className="block">Comment</label>
-                    <textarea name="comment" id="comment" value={formData.comment} onChange={handleCommentChange} className="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500" />
+                    <textarea name="comment" id="comment" value={formData.comment} placeholder='Write a descriptive review here...'
+                    onChange={handleCommentChange} className="w-full h-32 border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500" />
+                </div>
+                <div className='flex -mt-1 pb-4'>
+                    <input type="checkbox" name="anonymous" id="anonymous" checked={formData.anonymous}
+                        onChange={(e) => setFormData((prevData) => ({ ...prevData, anonymous: e.target.checked }))} />
+                    <label htmlFor="anonymous" className="ml-2">Post as Anonymous</label>
                 </div>
             </div>
             {stateOfReview ? (

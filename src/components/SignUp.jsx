@@ -36,9 +36,9 @@ export default () => {
 
             // Redirect to the home page.
             window.location.href = '/';
-            console.log("Logged in successfully")
-            console.log("data", response.data)
-            console.log("localStorage", localStorage)
+            // console.log("Logged in successfully")
+            // console.log("data", response.data)
+            // console.log("localStorage", localStorage)
         }
 
         catch (e) {

@@ -24,6 +24,7 @@ export default () => {
                     { headers: { 'Content-Type': 'application/json' } }
                 );
 
+
             // Set the access token and refresh token.
             localStorage.setItem('access_token', response.data.access);
             localStorage.setItem('refresh_token', response.data.refresh);
@@ -35,14 +36,14 @@ export default () => {
 
             // Redirect to the home page.
             window.location.href = '/';
-            console.log("Logged in successfully")
-            console.log("data", response.data)
-            console.log("localStorage", localStorage)
+            // console.log("Logged in successfully")
+            // console.log("data", response.data)
+            // console.log("localStorage", localStorage)
         }
 
         catch (e) {
             alert("Please enter valid credentials")
-            console.log("Login failed")
+            console.log("Login failed", e)
         }
     }
 

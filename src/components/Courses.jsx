@@ -3,50 +3,34 @@ import { useState, useEffect } from "react"
 import CourseCard from "./CourseCard"
 import Sort from "./home/Sort"
 import Navbar2 from "./Navbar2"
-import courses from "../constants/courses"
+import courses2 from "../constants/courses"
 import axios from "axios"
+import { useApi } from '../ApiContext.jsx';
 
 export default () => {
 
-    const [courses2, setCourses2] = useState([]);
+    const { courses, loading, error } = useApi();
 
-    useEffect(() => {
-        // Fetch courses
-        axios.get(window.API + '/api/courses/', {
-            headers: {
-                'Content-Type': 'application/json',
-                Authorization: `Bearer ${localStorage.getItem('access_token')}`,
-            },
-        })
-            .then((response) => {
-                // console.log(response.data);
-                setCourses2(response.data.map((course) => ({
-                    id: course.id,
-                    name: course.name,
-                    code: course.codes,
-                    instructors: course.get_instructors,
-                    institute: course.institute,
-                    avg_rating: course.avg_rating,
-                    avg_difficulty: course.avg_difficulty,
-                    avg_workload: course.avg_workload,
-                    avg_class_size: course.avg_class_size,
-                    avg_grade: course.avg_grade,
-                    get_comments: course.get_comments,
-                })));
-                
-            })
-            .catch((error) => {
-                console.error('Error fetching courses');
-            });
-    }, []);
-    
-    console.log(courses2)
+    if (loading || error) {
+        return (
+          <div>
+            <Navbar2 />
+              <div className="flex items-center justify-center h-[83vh]">
+                {loading ? (
+                  <div className="animate-spin rounded-full h-32 w-32 border-t-4 border-b-4 border-primary-600"></div>
+                ) : (
+                  <div className="text-2xl text-gray-600">Course not found</div>
+                )}
+              </div>
+          </div>
+        );
+    }
 
     return (
         <div className="">
             <Navbar2 />
-            <div id="filter" className="w-full box-border flex flex-row justify-between divide-x px-2 py-3">
-                <div className="w-1/6 flex flex-col">
+            <div id="filter" className="w-full box-border flex flex-row justify-between lg:divide-x lg:px-2 py-3">
+                <div className="w-1/6 hidden lg:flex lg:flex-col">
                     <div className="flex flex-col pr-2">
                         <p className="pl-2 pt-2">Filters</p>
                         <div className="flex flex-col gap-1 p-2">
@@ -113,8 +97,8 @@ export default () => {
                             <p className="font-medium"> Instructor </p>
                             <div className="flex flex-col pl-2 max-h-40 overflow-y-auto text-sm" >
                                 {
-                                    Object.keys(courses2.instructors).map((instructor) => (
-                                    // courses2.map((course, ) => (
+                                    Object.keys(courses.instructors).map((instructor) => (
+                                    // courses.map((course, ) => (
                                         <div key={instructor}>
                                             <input type="checkbox" id={instructor} name={instructor} value={instructor} />
                                             <label htmlFor={instructor}> {instructor} </label>
@@ -270,8 +254,8 @@ export default () => {
                 </div>
 
 
-                <div id="courses" className="w-5/6 px-10 py-2">
-                    <div className="flex flex-row justify-between items-center mb-5">
+                <div id="courses" className="w-full lg:w-5/6 px-4 lg:px-10 py-2">
+                    <div className="flex flex-row justify-between items-center mb-3">
                         <div className="text-gray-800 text-base self-end">
                             Displaying results
                         </div>
@@ -281,7 +265,7 @@ export default () => {
                     </div>
 
                     <div className="flex flex-col gap-3">
-                        {courses2.map((course) => (
+                        {courses.map((course) => (
                             <Link
                                 key={course.id}
                                 to={`/courses/${course.id}`}
