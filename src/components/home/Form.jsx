@@ -131,7 +131,7 @@ function ReviewForm() {
                         value={formData.course}
                         onChange={(selectedOption) => handleInputChange('course', selectedOption)}
                         isSearchable
-                        placeholder="Select a course..."
+                        placeholder= {loading ? 'Loading...' : error ? 'Error loading courses' : 'Select a course...'}
                     />
                 </div>
                 <div>
