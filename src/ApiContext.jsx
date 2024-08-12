@@ -23,6 +23,13 @@ export const ApiProvider = ({ children }) => {
       try {
         const response = await axios.get(`${window.API}/api/courses/`, { headers });
         setCourses(response.data);
+        console.log(response.code);
+
+        if (response.code === 'ERR_BAD_REQUEST') {
+          setError(response.code);
+          alert('Please login again');
+        }
+
       } catch (error) {
         setError(error);
       } finally {
@@ -41,3 +48,4 @@ export const ApiProvider = ({ children }) => {
 };
 
 export const useApi = () => useContext(ApiContext);
+export default ApiContext;
