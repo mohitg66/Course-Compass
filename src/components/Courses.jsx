@@ -231,24 +231,6 @@ export default () => {
                                 </div>
                             </div>
                         </div>
-
-                        <div className="flex flex-col gap-1 p-2">
-                            <p className="font-medium"> Class Size Limit </p>
-                            <div className="flex flex-col pl-2 text-sm">
-                                {/* <div>
-                                    <input type="range" id="classSize" name="classSize" min="0" max="600" />
-                                    <p>
-                                        <span id="classSizeValue">upto </span> <output htmlFor="classSize" onhtmlForminput="value = classSize.valueAsNumber;">600</output>
-
-                                    </p>
-                                </div> */}
-                                <div className="flex items-center gap-3">
-                                    <label htmlFor="classSize"> 0 </label>
-                                    <input type="range" id="classSize" name="classSize" min="0" max="1000" />
-                                    <label htmlFor="classSize"> 1000 </label>
-                                </div>
-                            </div>
-                        </div>
                     </div>
 
                 </div>
