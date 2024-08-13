@@ -1,4 +1,3 @@
-// ApiContext.js
 import React, { createContext, useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 
@@ -23,15 +22,8 @@ export const ApiProvider = ({ children }) => {
       try {
         const response = await axios.get(`${window.API}/api/courses/`, { headers });
         setCourses(response.data);
-        console.log(response.code);
-
-        if (response.code === 'ERR_BAD_REQUEST') {
-          setError(response.code);
-          alert('Please login again');
-        }
-
       } catch (error) {
-        setError(error);
+        setError(error.message);
       } finally {
         setLoading(false);
       }
@@ -47,5 +39,8 @@ export const ApiProvider = ({ children }) => {
   );
 };
 
-export const useApi = () => useContext(ApiContext);
+export const useApi = () => {
+  return useContext(ApiContext);
+};
+
 export default ApiContext;

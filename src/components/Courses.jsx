@@ -14,7 +14,7 @@ export default () => {
     if (loading || error) {
         return (
           <div>
-            <Navbar2 />
+            {/* <Navbar2 /> */}
               <div className="flex items-center justify-center h-[83vh]">
                 {loading ? (
                   <div className="animate-spin rounded-full h-32 w-32 border-t-4 border-b-4 border-primary-600"></div>
@@ -28,7 +28,7 @@ export default () => {
 
     return (
         <div className="">
-            <Navbar2 />
+            {/* <Navbar2 /> */}
             <div id="filter" className="w-full box-border flex flex-row justify-between lg:divide-x lg:px-2 py-3">
                 <div className="w-1/6 hidden lg:flex lg:flex-col">
                     <div className="flex flex-col pr-2">

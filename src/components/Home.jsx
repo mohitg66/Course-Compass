@@ -46,7 +46,7 @@ export default () => {
 
             <div id='home' className="bg-gray-50 h-screen flex flex-col">
 
-                <Navbar2 />
+                {/* <Navbar2 /> */}
 
                 <section id='hero' className="flex-1 h-full border flex items-center justify-center">
                   <div className="max-w-screen-xl text-gray-600 m-auto gap-x-12 items-center justify-between overflow-hidden md:flex md:px-8">

@@ -95,9 +95,9 @@ export default () => {
                             onChange={(e) => setPassword(e.target.value)}
                         />
                     </div>
-                    <div className="flex items-center justify-between text-sm">
+                    {/* <div className="flex items-center justify-between text-sm">
                         <a href="#" className="text-center text-blue-600 hover:text-blue-500">Forgot password?</a>
-                    </div>
+                    </div> */}
 
                     <button
                         type="submit"

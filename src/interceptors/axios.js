@@ -1,39 +1,53 @@
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import axios from 'axios';
+
 let refresh = false;
 
-axios.interceptors.response.use(resp => resp, async error => {
-    if (error.response.status === 401 && !refresh) {
-        refresh = true;
-        console.log("refreshing token")
-        console.log(localStorage.getItem('refresh_token'))
+axios.interceptors.response.use(
+  response => response,
+  async error => {
+    if (error.response && error.response.status === 401 && !refresh) {
+      refresh = true;
+      console.log("Refreshing token...");
+      console.log("localStorage", localStorage);
+      const refreshToken = localStorage.getItem('refresh_token');
+
+      if (refreshToken) {
         try {
-            const response = await axios.post(
-                window.API + '/token/refresh/',
-                {
-                    refresh: localStorage.getItem('refresh_token')
-                },
-                {
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    withCredentials: true
-                }
-            );
-            if (response.status === 200) {
-                axios.defaults.headers.common['Authorization'] = `Bearer ${response.data['access']}`;
-                localStorage.setItem('access_token', response.data.access);
-                localStorage.setItem('refresh_token', response.data.refresh);
-                return axios(error.config);
+          const response = await axios.post(
+            `${window.API}/token/refresh/`,
+            { refresh: refreshToken },
+            {
+              headers: { 'Content-Type': 'application/json' },
+              withCredentials: true
             }
-        } catch (refreshError) {
-            // Redirect to login page, using react
-            console.log("refresh error, redirecting to login page");
-            console.log(refreshError)
-            const navigate = useNavigate();
-            navigate('/login');            
+          );
+
+          console.log("Token refreshed successfully");
+          localStorage.setItem('access_token', response.data.access);
+          localStorage.setItem('refresh_token', response.data.refresh);
+
+          // Retry the original request with the new access token
+          error.config.headers['Authorization'] = `Bearer ${response.data.access}`;
+          refresh = false;
+          return axios(error.config);
+
+        } catch (err) {
+          console.log("Refresh error, redirecting to login page", err);
+          localStorage.removeItem('access_token');
+          localStorage.removeItem('refresh_token');
+          alert("Session expired, please login again");
+          window.location.href = '/login';
         }
+      } else {
+        console.log("No refresh token available, redirecting to login page");
+        localStorage.removeItem('access_token');
+        localStorage.removeItem('refresh_token');
+        alert("Session expired, please login again");
+        window.location.href = '/login';
+      }
     }
+
     refresh = false;
-    return error;
-});
+    return Promise.reject(error);
+  }
+);

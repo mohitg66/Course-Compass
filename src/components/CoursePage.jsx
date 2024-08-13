@@ -18,17 +18,27 @@ export default () => {
   const [course, setCourse] = useState(null);
 
   useEffect(() => {
-    axios.get(window.API + `/api/courses/${id}/`, {
-      headers: {
+    const fetchCourse = async () => {
+      const token = localStorage.getItem('access_token');
+      const headers = {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${localStorage.getItem('access_token')}`
+      };
+  
+      if (token) {
+        headers['Authorization'] = `Bearer ${token}`;
       }
-    })
-    .then(response => {
-      setCourse(response.data);
-    })
-    .catch(error => console.error(error))
-    .finally(() => setLoading(false));
+  
+      try {
+        const response = await axios.get(`${window.API}/api/courses/${id}/`, { headers });
+        setCourse(response.data);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+  
+    fetchCourse();
   }, [id]);
   
   const [state, setState] = useState(false);
@@ -89,7 +99,7 @@ export default () => {
   if (!course) {
     return (
       <div>
-        <Navbar2 />
+        {/* <Navbar2 /> */}
         <div className="flex items-center justify-center h-[83vh]">
           {loading ? (
             <div className="animate-spin rounded-full h-32 w-32 border-t-4 border-b-4 border-primary-600"></div>
@@ -167,7 +177,7 @@ export default () => {
       </div>
    
 
-      <Navbar2 />
+      {/* <Navbar2 /> */}
 
       <div className="max-w-screen-xl lg:py-4 mx-auto box-content flex flex-col lg:flex-row gap-6">
         {/* this div should not scroll */}
@@ -311,7 +321,7 @@ export default () => {
                 </div>
               </div>
             ))
-            : <div className="text-center">No comments available</div>}
+            : <div className="text-center mt-6">No comments available</div>}
           </div>
         </div>
       </div>
