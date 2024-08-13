@@ -21,7 +21,8 @@ export const ApiProvider = ({ children }) => {
 
       try {
         const response = await axios.get(`${window.API}/api/courses/`, { headers });
-        setCourses(response.data);
+        const sortedCourses = response.data.sort((a, b) => b.comments_count - a.comments_count);
+        setCourses(sortedCourses);
       } catch (error) {
         setError(error.message);
       } finally {

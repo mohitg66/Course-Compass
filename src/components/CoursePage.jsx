@@ -274,9 +274,9 @@ export default () => {
                         {review.user_username}
                       </a>
                     </div>
-                    <span className="w-40 absolute bottom-10 left-0 bg-gray-700 text-white text-xs rounded py-1 px-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    {/* <span className="w-40 absolute bottom-10 left-0 bg-gray-700 text-white text-xs rounded py-1 px-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       {review.user_username} achieved {review.grade} in this course
-                    </span>
+                    </span> */}
                   </div>
                   <div className="relative group">
                     <a href={`mailto:${review.user_email}`} className="flex items-center">
