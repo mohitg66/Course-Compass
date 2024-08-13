@@ -32,7 +32,7 @@ export default () => {
 
     return (
         <>
-        <Navbar2 />
+        {/* <Navbar2 /> */}
 
         <main className="py-14">
             <div className="max-w-screen-xl mx-auto px-4 text-gray-600 md:px-8">
