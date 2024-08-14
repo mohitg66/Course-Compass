@@ -185,7 +185,13 @@ export default () => {
           <div className="w-full lg:h-1/2 p-6 flex flex-col gap-1 justify-center bg-primary-600 text-primary-50 lg:rounded-2xl">
             <div className="text-xl lg:text-2xl font text-center">{course.codes}</div>
             <div className="text-2xl lg:text-4xl py-3 lg:py-12 font-bold text-center">
-              <u>{course.name}</u>
+              <a 
+                href={`https://techtree.iiitd.edu.in/viewDescription/filename?=${course.codes.split('/')[0]}`} 
+                target="_blank" 
+                rel="noopener noreferrer"
+              >
+                <u>{course.name}</u>
+              </a>
             </div>
 
             <div className="text-lg lg:text-xl flex flex-row justify-center divide-x">
