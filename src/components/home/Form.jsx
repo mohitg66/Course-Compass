@@ -19,7 +19,7 @@ function ReviewForm() {
 
     // const { loading, error } = useApi();
     const { courses: data , loading, error } = useApi();
-    console.log(data, loading, error);
+    // console.log(data, loading, error);
 
     const [courses, setCourses] = useState([]);
 
