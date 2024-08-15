@@ -13,7 +13,7 @@ const ProfileDropDown = (props) => {
     const profileRef = useRef()
 
     const navigation = [
-        // { title: "Profile", path: "#" },
+        { title: "Contact Us", path: "/contact" },
         { title: "Log out", path: "/logout" },
     ]
 
@@ -63,10 +63,10 @@ const ProfileDropDown = (props) => {
 export default () => {
     const navigate = useNavigate();
 
-    const [isAuth, setIsAuth] = useState(false);
+    const [isAuth, setIsAuth] = useState(true);
     useEffect(() => {
-        if (localStorage.getItem('access_token') !== null) {
-            setIsAuth(true);
+        if (localStorage.getItem('access_token') == null) {
+            setIsAuth(false);
         }
     }, [isAuth]);
 
@@ -95,7 +95,7 @@ export default () => {
     useEffect(() => {
         if (course)
             navigate(`/courses/${course.value}`);
-    }
+    }   
     , [course]);
 
     return (
@@ -147,11 +147,11 @@ export default () => {
                                     className="w-full"
                                     id="course"
                                     name="course"
-                                    options={courses}
+                                    options={loading ? [{ value: "loading", label: "Loading...", isDisabled: true }] : courses}   
                                     value={course}
                                     onChange={(selectedOption) => {setCourse(selectedOption)}}
                                     isSearchable
-                                    placeholder="Search"
+                                    placeholder= "Search"
                                 />
                             </form>
                             <ProfileDropDown

@@ -127,11 +127,11 @@ function ReviewForm() {
                     <Select
                         id="course"
                         name="course"
-                        options={courses}
+                        options={loading ? [{ value: "loading", label: "Loading...", isDisabled: true }] : courses}   
                         value={formData.course}
                         onChange={(selectedOption) => handleInputChange('course', selectedOption)}
                         isSearchable
-                        placeholder= {loading ? 'Loading...' : error ? 'Error loading courses' : 'Select a course...'}
+                        placeholder= 'Select a course...'
                     />
                 </div>
                 <div>
@@ -148,7 +148,7 @@ function ReviewForm() {
                         ]}
                         value={formData.course_rating}
                         onChange={(selectedOption) => handleInputChange('course_rating', selectedOption)}
-                        isSearchable
+                        isSearchable = {false}
                         placeholder="Select a rating..."
                     />
                 </div>
@@ -166,7 +166,7 @@ function ReviewForm() {
                         ]}
                         value={formData.instructor_rating}
                         onChange={(selectedOption) => handleInputChange('instructor_rating', selectedOption)}
-                        isSearchable
+                        isSearchable = {false}
                         placeholder="Select a rating..."
                     />
                 </div>
@@ -184,7 +184,7 @@ function ReviewForm() {
                         ]}
                         value={formData.difficulty}
                         onChange={(selectedOption) => handleInputChange('difficulty', selectedOption)}
-                        isSearchable
+                        isSearchable = {false}
                         placeholder="Select a difficulty..."
                     />
                 </div>
@@ -202,7 +202,7 @@ function ReviewForm() {
                         ]}
                         value={formData.workload}
                         onChange={(selectedOption) => handleInputChange('workload', selectedOption)}
-                        isSearchable
+                        isSearchable = {false}
                         placeholder="Select a workload..."
                     />
                 </div>
@@ -218,7 +218,7 @@ function ReviewForm() {
                         ]}
                         value={formData.class_size}
                         onChange={(selectedOption) => handleInputChange('class_size', selectedOption)}
-                        isSearchable
+                        isSearchable = {false}
                         placeholder="Select a class size..."
                     />
                 </div>
@@ -241,7 +241,7 @@ function ReviewForm() {
                         ]}
                         value={formData.grade}
                         onChange={(selectedOption) => handleInputChange('grade', selectedOption)}
-                        isSearchable
+                        isSearchable = {false}
                         placeholder="Select your grade..."
                     />
                 </div>
