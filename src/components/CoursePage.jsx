@@ -31,6 +31,7 @@ export default () => {
       try {
         const response = await axios.get(`${window.API}/api/courses/${id}/`, { headers });
         setCourse(response.data);
+        console.log(response.data);
       } catch (error) {
         console.error(error);
       } finally {
