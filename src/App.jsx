@@ -13,7 +13,7 @@ import { BrowserRouter as Router, Routes, Route, Link, BrowserRouter } from 'rea
 import SignOut from './components/SignOut'
 
 // global variable for backend API
-window.API = 'https://course-compass-backend.onrender.com'
+window.API = 'https://course-compass-backend.vercel.app'
 // window.API = 'http://127.0.0.1:8000'
 
 function App() {
