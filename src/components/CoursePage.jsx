@@ -97,12 +97,12 @@ export default () => {
   };
 
 
-  if (!course) {
+  if (!course || loading) {
     return (
       <div>
         {/* <Navbar2 /> */}
         <div className="flex items-center justify-center h-[83vh]">
-          {loading ? (
+          {!course || loading ? (
             <div className="animate-spin rounded-full h-32 w-32 border-t-4 border-b-4 border-primary-600"></div>
           ) : localStorage.getItem('access_token') === null ? (
             <div className="text-2xl text-gray-600 text-center">You need to login to view this page</div>

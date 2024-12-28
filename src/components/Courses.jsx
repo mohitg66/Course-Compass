@@ -11,12 +11,12 @@ export default () => {
 
     const { courses, loading, error } = useApi();
 
-    if (loading || error) {
+    if (!courses || loading || error) {
         return (
           <div>
             {/* <Navbar2 /> */}
               <div className="flex items-center justify-center h-[83vh]">
-                {loading ? (
+                {!courses || loading ? (
                   <div className="animate-spin rounded-full h-32 w-32 border-t-4 border-b-4 border-primary-600"></div>
                 ) : (
                   <div className="text-2xl text-gray-600">Courses not found</div>
